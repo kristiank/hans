@@ -1,0 +1,66 @@
+h1 {
+	font-family: "Raleway",sans-serif;
+	font-weight: 300;
+}
+
+h2 {
+	font-family: "Raleway",sans-serif;
+	font-weight: 300;
+}
+
+p {
+	width: 100%
+}
+
+a {
+	font-family: "Raleway",sans-serif;
+	font-weight: 300;
+}
+
+.date {
+	font: small-caps 12px Arial;
+}
+
+.viide {
+	font: small-caps 12px Arial;
+}
+
+.nimi {
+	font: italic bold 12px Georgia, serif;
+}
+
+.arakiri-tekst {
+		font: italic 12px/30px Georgia, serif;
+}
+
+
+/* used to give focus to table headings */
+th:hover { background: #e4eef0; cursor: pointer }
+
+/* used for tool tips */
+.tooltip {
+	background: #96433D;
+	color: white;
+	font-size: 8pt;
+	font-style:normal;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Raleway Thin'), local('Raleway-Thin'), url(http://fonts.gstatic.com/s/raleway/v9/RJMlAoFXXQEzZoMSUteGWFtXRa8TVwTICgirnJhmVJw.woff2) format('woff2'), url(http://fonts.gstatic.com/s/raleway/v9/RJMlAoFXXQEzZoMSUteGWD8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Raleway Light'), local('Raleway-Light'), url(http://fonts.gstatic.com/s/raleway/v9/-_Ctzj9b56b8RgXW8FArifk_vArhqVIZ0nv9q090hN8.woff2) format('woff2'), url(http://fonts.gstatic.com/s/raleway/v9/-_Ctzj9b56b8RgXW8FAriRsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Raleway SemiBold'), local('Raleway-SemiBold'), url(http://fonts.gstatic.com/s/raleway/v9/xkvoNo9fC8O2RDydKj12b_k_vArhqVIZ0nv9q090hN8.woff2) format('woff2'), url(http://fonts.gstatic.com/s/raleway/v9/xkvoNo9fC8O2RDydKj12bxsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+}

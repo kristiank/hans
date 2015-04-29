@@ -1,0 +1,457 @@
+<?xml-stylesheet href="static/xsltforms/xsltforms.xsl" type="text/xsl"?>
+<!--  <?xsltforms-options debug="yes" lang="et"?> -->
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:xf="http://www.w3.org/2002/xforms"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:hans="http://www.eki.ee/dict/vka"
+  xmlns:ev="http://www.w3.org/2001/xml-events"
+>
+  <head>
+    <title>HANS leiu toimetamine</title>
+    <meta name="generator" content="Bluefish 2.2.7" />
+    <meta name="author" content="Kristian" />
+    <meta name="date" content="2015-04-20T15:06:47+0300" />
+    <meta name="copyright" content="Eesti Keele Instituut" />
+    <meta name="keywords" content="eesti keel kirjalikes ajalooallikates" />
+    <meta name="description" content="Eesti keel kirjalikes ajalooallikates" />
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <meta http-equiv="content-style-type" content="text/css" />
+    <meta http-equiv="expires" content="0" />
+    <!--
+    <link href="static/hans.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="static/hans-print.css" rel="stylesheet" type="text/css" media="print" />
+    <link href="static/media/eki-favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    -->
+    
+    <!-- Hansu EELexi artikli mudel -->
+    <xf:model id="hans-leid">
+      <xf:submission id="submit" action="update-entry" method="post"/>
+        <xf:instance id="hans-instance" xmlns="" xmlns:hans="http://www.eki.ee/dict/vka">
+          <data>
+            <hans:A hans:KF="vka1">
+              <hans:m hans:O=""></hans:m>
+              <hans:sgrp>
+                <hans:snimi></hans:snimi>
+                <hans:skontakt></hans:skontakt>
+                <hans:slink type="xs:boolean">true</hans:slink>
+              </hans:sgrp>
+              <hans:tgrp>
+                <hans:arakiri></hans:arakiri>
+                <hans:kirjeldus></hans:kirjeldus>
+                <hans:tkom></hans:tkom>
+              </hans:tgrp>
+              <hans:agrp>
+                <hans:viide>
+                  <hans:a></hans:a>
+                  <hans:f></hans:f>
+                  <hans:fondinimi></hans:fondinimi>
+                  <hans:n></hans:n>
+                  <hans:s></hans:s>
+                  <hans:l></hans:l>
+                  <hans:vmuu></hans:vmuu>
+                </hans:viide>
+                <hans:dgrp>
+                  <hans:saj></hans:saj>
+                  <hans:dat></hans:dat>
+                </hans:dgrp>
+                <hans:akeel></hans:akeel>
+                <hans:kgrp>
+                  <hans:kn></hans:kn>
+                  <hans:kmark></hans:kmark>
+                </hans:kgrp>
+              </hans:agrp>
+              <hans:fgrp>
+                <!-- <hans:ffail hans:mT="img" hans:filename="" xsi:type="xs:base64Binary"/> -->
+              </hans:fgrp>
+              <hans:lgrp>
+                <hans:link/>
+              </hans:lgrp>
+              <hans:KOM>
+                <hans:komg>
+                  <hans:kom/>
+                  <hans:kaut/>
+                  <hans:kaeg/>
+                </hans:komg>
+              </hans:KOM>
+              <hans:G></hans:G>
+              <hans:K>www</hans:K>
+            </hans:A>
+          </data>
+        </xf:instance>
+          
+        <!-- mitme lingi lisamiseks on siin defineeritud tühja lingi element -->
+        <xf:instance id="multiple-link-template" xmlns="" xmlns:hans="http://www.eki.ee/dict/vka">
+          <data>
+            <hans:link/>
+          </data>
+        </xf:instance>
+        
+        <!-- mitme pildifaili lisamiseks on siin defineeritud tühja faili element -->
+        <xf:instance id="multiple-file-template" xmlns="" xmlns:hans="http://www.eki.ee/dict/vka">
+          <data>
+            <hans:ffail hans:mT="img" hans:filename="" xsi:type="xs:base64Binary"/>
+          </data>
+        </xf:instance>
+        
+        <!-- Mudeli loogika ja seaded -->
+        <xf:bind nodeset="instance('hans-instance')/hans:A/hans:sgrp/hans:snimi"
+                 type="xs:normalizedString"
+                 required="true()"
+                 constraint="string-length(normalize-space(.)) &gt; 0"/>
+        <xf:bind nodeset="instance('hans-instance')/hans:A/hans:sgrp/hans:skontakt"
+                 type="xs:normalizedString"
+                 required="true()"
+                 constraint="string-length(normalize-space(.)) &gt; 0"/>
+        <xf:bind nodeset="instance('hans-instance')/hans:A/hans:sgrp/hans:slink"
+                 type="xs:boolean"/>
+        <!-- piisab kas ärakirjast või kirjeldusest, mõlemaid ei pea sisestama -->
+        <xf:bind nodeset="instance('hans-instance')/hans:A/hans:tgrp/hans:arakiri"
+                 type="xs:string"
+                 constraint="string-length(normalize-space(instance('hans-instance')/hans:A/hans:tgrp/hans:kirjeldus)) &gt; 0
+                             or
+                             string-length(normalize-space(.)) &gt; 0"/>
+        <xf:bind nodeset="instance('hans-instance')/hans:A/hans:tgrp/hans:kirjeldus"
+                 type="xs:string"
+                 constraint="string-length(normalize-space(instance('hans-instance')/hans:A/hans:tgrp/hans:arakiri)) &gt; 0
+                             or
+                             string-length(normalize-space(.)) &gt; 0"/>
+        <xf:bind nodeset="instance('hans-instance')/hans:A/hans:agrp/hans:viide/hans:a"
+                 type="xs:string" required="true()"/>
+        <xf:bind nodeset="instance('hans-instance')/hans:A/hans:agrp/hans:viide/hans:f"
+                 type="xs:string" required="true()"/>
+        <xf:bind nodeset="instance('hans-instance')/hans:A/hans:agrp/hans:viide/hans:s"
+                 type="xs:string" required="true()"/>
+        <xf:bind nodeset="instance('hans-instance')/hans:A/hans:agrp/hans:akeel"
+                 type="xs:normalizedString" required="true()"/>
+        <xf:bind nodeset="instance('hans-instance')/hans:A/hans:agrp/hans:dgrp/hans:saj"
+                 type="xs:positiveInteger" required="true()"/>
+        <!-- <xf:bind nodeset="instance('hans-instance')/hans:A/hans:lgrp/hans:link"
+                 type="xs:anyURI|''"/> -->
+        <!-- <xf:bind nodeset="instance('hans-instance')/hans:A/hans:fgrp/hans:ffail"
+                 xsi:type="xs:base64Binary|''"/> -->
+        
+        <!-- Tõlked ja lokaliseerimine -->
+        <xf:itext>
+          <xf:translation lang="et">
+            <xf:text id="legend-kontaktandmed"><xf:value>Kontakt­andmed</xf:value></xf:text>
+            <xf:text id="label-snimi"><xf:value>Sinu nimi: </xf:value></xf:text>
+            <xf:text id="hint-snimi"><xf:value>Vormi täitja nimi kujul Eesnimi Perenimi.</xf:value></xf:text>
+            <xf:text id="label-skontakt"><xf:value>Sinu epost: </xf:value></xf:text>
+            <xf:text id="hint-skontakt"><xf:value>Vormi täitja eposti aadress (ei avalikustata).</xf:value></xf:text>
+            <xf:text id="label-slink"><xf:value>Saada link</xf:value></xf:text>
+            <xf:text id="hint-slink"><xf:value>Soovin e-kirjaga linki kirje täiendamiseks.</xf:value></xf:text>
+            
+            <xf:text id="legend-tekstiandmed"><xf:value>Teksti ärakiri või lühi­kirjeldus</xf:value></xf:text>
+            <xf:text id="help-charinsert"><xf:value>Töö hõlbustamiseks võid siia kopeerida eelnevalt teksti­töötlus­programmis sisestatud teksti. Järgmisi võõr- ja liit­tähti saad kursoriga näidatud kohta sisestada tähel klõpsates: </xf:value></xf:text>
+            <xf:text id="label-arakiri"><xf:value>Teksti ärakiri: </xf:value></xf:text>
+            <xf:text id="hint-arakiri"><xf:value>Siia sisesta tekst. Pika või keerulise teksti puhul sisesta selle esimesed read ja kirjelda parem­poolses kastis teksti lühidalt.</xf:value></xf:text>
+            <xf:text id="label-kirjeldus"><xf:value>Teksti lühi­kirjeldus: </xf:value></xf:text>
+            <xf:text id="hint-kirjeldus"><xf:value>Kirjelda siin lühidalt teksti, kui seda pole tervikuna ümber kirjutatud. Märgi ka teksti ligikaudne maht.</xf:value></xf:text>
+            <xf:text id="label-tkom"><xf:value>Kommentaar/kontekst: </xf:value></xf:text>
+            <xf:text id="hint-tkom"><xf:value>Kui leitud tekst on seotud sündmuse või asja­oludega, mis aitavad seda paremini mõista, siis kirjelda neid siin. Vajadusel lisa viide kirjandusele.</xf:value></xf:text>
+            
+            <xf:text id="legend-arhiiviandmed"><xf:value>Arhiivi­andmed</xf:value></xf:text>
+            <xf:text id="label-a"><xf:value>Arhiiv: </xf:value></xf:text>
+            <xf:text id="hint-a"><xf:value></xf:value></xf:text>
+            <xf:text id="label-f"><xf:value>Fond: </xf:value></xf:text>
+            <xf:text id="hint-f"><xf:value></xf:value></xf:text>
+            <xf:text id="label-fondinimi"><xf:value>Fondi nimetus: </xf:value></xf:text>
+            <xf:text id="hint-fondinimi"><xf:value></xf:value></xf:text>
+            <xf:text id="label-n"><xf:value>Nimistu: </xf:value></xf:text>
+            <xf:text id="hint-n"><xf:value></xf:value></xf:text>
+            <xf:text id="label-s"><xf:value>Säilik: </xf:value></xf:text>
+            <xf:text id="hint-s"><xf:value></xf:value></xf:text>
+            <xf:text id="label-l"><xf:value>Lehe­küljed: </xf:value></xf:text>
+            <xf:text id="hint-l"><xf:value></xf:value></xf:text>
+            <xf:text id="label-vmuu"><xf:value>Viite muud osad: </xf:value></xf:text>
+            <xf:text id="hint-vmuu"><xf:value></xf:value></xf:text>
+            <xf:text id="label-saj"><xf:value>Sajand: </xf:value></xf:text>
+            <xf:text id="hint-saj"><xf:value></xf:value></xf:text>
+            <xf:text id="label-saj-21"><xf:value>21. sajand</xf:value></xf:text>
+            <xf:text id="label-saj-20"><xf:value>20. sajand</xf:value></xf:text>
+            <xf:text id="label-saj-19"><xf:value>19. sajand</xf:value></xf:text>
+            <xf:text id="label-saj-18"><xf:value>18. sajand</xf:value></xf:text>
+            <xf:text id="label-saj-17"><xf:value>17. sajand</xf:value></xf:text>
+            <xf:text id="label-saj-16"><xf:value>16. sajand</xf:value></xf:text>
+            <xf:text id="label-saj-15"><xf:value>15. sajand</xf:value></xf:text>
+            <xf:text id="label-saj-14"><xf:value>14. sajand</xf:value></xf:text>
+            <xf:text id="label-saj-13"><xf:value>13. sajand</xf:value></xf:text>
+            <xf:text id="label-dat"><xf:value>Daatum vaba­tekstina: </xf:value></xf:text>
+            <xf:text id="hint-dat"><xf:value>Võimalusel sisesta kuu­päevad kujul pp.kk.aaaa</xf:value></xf:text>
+            <xf:text id="label-akeel"><xf:value>Allika põhi­keel: </xf:value></xf:text>
+            <xf:text id="hint-akeel"><xf:value></xf:value></xf:text>
+            <xf:text id="label-akeel-saksa"><xf:value>saksa</xf:value></xf:text>
+            <xf:text id="label-akeel-rootsi"><xf:value>rootsi</xf:value></xf:text>
+            <xf:text id="label-akeel-vene"><xf:value>vene</xf:value></xf:text>
+            <xf:text id="label-akeel-ladina"><xf:value>ladina</xf:value></xf:text>
+            <xf:text id="label-akeel-eesti"><xf:value>eesti</xf:value></xf:text>
+            <xf:text id="label-akeel-saksa-rootsi"><xf:value>saksa-rootsi</xf:value></xf:text>
+            <xf:text id="label-akeel-alamsaksa"><xf:value>alamsaksa</xf:value></xf:text>
+            <xf:text id="label-akk"><xf:value>Märkus allika keele kohta: </xf:value></xf:text>
+            <xf:text id="hint-akk"><xf:value></xf:value></xf:text>
+            <xf:text id="label-kn"><xf:value>Algse kirja­panija nimi: </xf:value></xf:text>
+            <xf:text id="hint-kn"><xf:value></xf:value></xf:text>
+            <xf:text id="label-kmark"><xf:value>Märkus algse kirja­panija kohta: </xf:value></xf:text>
+            <xf:text id="hint-kmark"><xf:value></xf:value></xf:text>
+            <xf:text id="label-link"><xf:value>Veebi­link: </xf:value></xf:text>
+            <xf:text id="hint-link"><xf:value></xf:value></xf:text>
+            <xf:text id="label-link-lisa"><xf:value>Lisa veel link</xf:value></xf:text>
+            <xf:text id="label-link-kustuta"><xf:value>Eemalda see link</xf:value></xf:text>
+            <xf:text id="label-file"><xf:value>Pildifailid: </xf:value></xf:text>
+            <xf:text id="hint-file"><xf:value>Leidudele on võimalik lisada pildifaile.</xf:value></xf:text>
+            <xf:text id="label-file-lisa"><xf:value>Lisa veel pilt</xf:value></xf:text>
+            <xf:text id="label-file-kustuta"><xf:value>Eemalda see pilt</xf:value></xf:text>
+            <xf:text id="label-submit"><xf:value>Salvesta</xf:value></xf:text>
+            
+            <xf:text id="label-"><xf:value></xf:value></xf:text>
+            <xf:text id="hint-"><xf:value></xf:value></xf:text>
+          </xf:translation>
+        </xf:itext>
+        
+      </xf:model>
+      
+   </head>
+   <body>
+     <xf:group>
+       <fieldset>
+         <legend><xf:output value="itext('legend-kontaktandmed')"/></legend>
+         <xf:group>
+           <xf:input ref="instance('hans-instance')/hans:A/hans:sgrp/hans:snimi" incremental="true">
+             <xf:label><xf:output value="itext('label-snimi')"/></xf:label>
+             <xf:hint><xf:output value="itext('hint-snimi')"/></xf:hint>
+           </xf:input>
+           
+           <xf:input ref="instance('hans-instance')/hans:A/hans:sgrp/hans:skontakt" incremental="true">
+             <xf:label><xf:output value="itext('label-skontakt')"/></xf:label>
+             <xf:hint><xf:output value="itext('hint-skontakt')"/></xf:hint>
+           </xf:input>
+           
+           <xf:input ref="instance('hans-instance')/hans:A/hans:sgrp/hans:slink" incremental="true">
+             <xf:label><xf:output value="itext('label-slink')"/></xf:label>
+             <xf:hint><xf:output value="itext('hint-slink')"/></xf:hint>
+           </xf:input>
+         </xf:group>
+       </fieldset>
+       <fieldset>
+          <legend><xf:output value="itext('legend-tekstiandmed')"/></legend>
+          <xf:output value="itext('help-charinsert')"/>Å å Aͤ aͤ Æ æ Ø ø Oͤ oͤ Œ œ M̄ m̄ N̄ n̄ ß
+           
+          <xf:textarea ref="instance('hans-instance')/hans:A/hans:tgrp/hans:arakiri" incremental="true">
+            <xf:label><xf:output value="itext('label-arakiri')"/></xf:label>
+            <xf:hint><xf:output value="itext('hint-arakiri')"/></xf:hint>
+          </xf:textarea>
+          
+          <xf:textarea ref="instance('hans-instance')/hans:A/hans:tgrp/hans:kirjeldus" incremental="true">
+            <xf:label><xf:output value="itext('label-kirjeldus')"/></xf:label>
+            <xf:hint><xf:output value="itext('hint-kirjeldus')"/></xf:hint>
+          </xf:textarea>
+          
+          <xf:textarea ref="instance('hans-instance')/hans:A/hans:tgrp/hans:tkom" incremental="true">
+            <xf:label><xf:output value="itext('label-tkom')"/></xf:label>
+            <xf:hint><xf:output value="itext('hint-tkom')"/></xf:hint>
+          </xf:textarea>
+          
+       </fieldset>
+       <fieldset>
+          <legend><xf:output value="itext('legend-arhiiviandmed')"/></legend>
+          
+          <xf:select1 ref="instance('hans-instance')/hans:A/hans:agrp/hans:viide/hans:a" appearance="minimal" incremental="true">
+            <xf:label><xf:output value="itext('label-a')"/></xf:label>
+            <xf:hint></xf:hint>
+            <xf:item>
+              <xf:label>EAA — Rahvusarhiivi Ajalooarhiiv</xf:label>
+              <xf:value>EAA</xf:value>
+            </xf:item>
+            <xf:item>
+              <xf:label>AM — Eesti Ajaloomuuseum</xf:label>
+              <xf:value>AM</xf:value>
+            </xf:item>
+            <xf:item>
+              <xf:label>EKLA — Eesti Kultuurilooline Arhiiv</xf:label>
+              <xf:value>EKLA</xf:value>
+            </xf:item>
+            <xf:item>
+              <xf:label>LVVA — Läti Riiklik Ajalooarhiiv</xf:label>
+              <xf:value>LVVA</xf:value>
+            </xf:item>
+            <xf:item>
+              <xf:label>SRA — Rootsi Riigiarhiiv</xf:label>
+              <xf:value>SRA</xf:value>
+            </xf:item>
+            <xf:item>
+              <xf:label>TLA — Tallinna Linnaarhiiv</xf:label>
+              <xf:value>TLA</xf:value>
+            </xf:item>
+          </xf:select1>
+          
+          <xf:input ref="instance('hans-instance')/hans:A/hans:agrp/hans:viide/hans:f" incremental="true">
+            <xf:label><xf:output value="itext('label-f')"/></xf:label>
+            <xf:hint><xf:output value="itext('hint-f')"/></xf:hint>
+          </xf:input>
+          
+          <xf:input ref="instance('hans-instance')/hans:A/hans:agrp/hans:viide/hans:fondinimi" incremental="true">
+            <xf:label><xf:output value="itext('label-fondinimi')"/></xf:label>
+            <xf:hint><xf:output value="itext('hint-fondinimi')"/></xf:hint>
+          </xf:input>
+          
+          <xf:input ref="instance('hans-instance')/hans:A/hans:agrp/hans:viide/hans:n" incremental="true">
+            <xf:label><xf:output value="itext('label-n')"/></xf:label>
+            <xf:hint><xf:output value="itext('hint-n')"/></xf:hint>
+          </xf:input>
+          
+          <xf:input ref="instance('hans-instance')/hans:A/hans:agrp/hans:viide/hans:s" incremental="true">
+            <xf:label><xf:output value="itext('label-s')"/></xf:label>
+            <xf:hint><xf:output value="itext('hint-s')"/></xf:hint>
+          </xf:input>
+          
+          <xf:input ref="instance('hans-instance')/hans:A/hans:agrp/hans:viide/hans:l" incremental="true">
+            <xf:label><xf:output value="itext('label-l')"/></xf:label>
+            <xf:hint><xf:output value="itext('hint-l')"/></xf:hint>
+          </xf:input>
+          
+          <xf:input ref="instance('hans-instance')/hans:A/hans:agrp/hans:viide/hans:vmuu" incremental="true">
+            <xf:label><xf:output value="itext('label-vmuu')"/></xf:label>
+            <xf:hint><xf:output value="itext('hint-vmuu')"/></xf:hint>
+          </xf:input>
+          
+          <xf:select1 ref="instance('hans-instance')/hans:A/hans:agrp/hans:dgrp/hans:saj" appearance="minimal" incremental="true">
+            <xf:label><xf:output value="itext('label-saj')"/></xf:label>
+            <xf:hint><xf:output value="itext('hint-saj')"/></xf:hint>
+            <xf:item>
+              <xf:label>18. sajand</xf:label>
+              <xf:value>18</xf:value>
+            </xf:item>
+            <xf:item>
+              <xf:label>17. sajand</xf:label>
+              <xf:value>17</xf:value>
+            </xf:item>
+            <xf:item>
+              <xf:label>16. sajand</xf:label>
+              <xf:value>16</xf:value>
+            </xf:item>
+            <xf:item>
+              <xf:label>15. sajand</xf:label>
+              <xf:value>15</xf:value>
+            </xf:item>
+            <xf:item>
+              <xf:label>14. sajand</xf:label>
+              <xf:value>14</xf:value>
+            </xf:item>
+            <xf:item>
+              <xf:label>13. sajand</xf:label>
+              <xf:value>13</xf:value>
+            </xf:item>
+          </xf:select1>
+          
+          <xf:input ref="instance('hans-instance')/hans:A/hans:agrp/hans:dgrp/hans:dat" incremental="true">
+            <xf:label><xf:output value="itext('label-dat')"/></xf:label>
+            <xf:hint><xf:output value="itext('hint-dat')"/></xf:hint>
+          </xf:input>
+          
+          <xf:select1 ref="instance('hans-instance')/hans:A/hans:agrp/hans:akeel" appearance="minimal" incremental="true">
+            <xf:label><xf:output value="itext('label-akeel')"/></xf:label>
+            <xf:hint><xf:output value="itext('hint-akeel')"/></xf:hint>
+            <xf:item>
+              <xf:label>saksa</xf:label>
+              <xf:value>saksa</xf:value>
+            </xf:item>
+            <xf:item>
+              <xf:label>rootsi</xf:label>
+              <xf:value>rootsi</xf:value>
+            </xf:item>
+            <xf:item>
+              <xf:label>vene</xf:label>
+              <xf:value>vene</xf:value>
+            </xf:item>
+            <xf:item>
+              <xf:label>ladina</xf:label>
+              <xf:value>ladina</xf:value>
+            </xf:item>
+            <xf:item>
+              <xf:label>eesti</xf:label>
+              <xf:value>eesti</xf:value>
+            </xf:item>
+            <xf:item>
+              <xf:label>saksa-rootsi</xf:label>
+              <xf:value>saksa-rootsi</xf:value>
+            </xf:item>
+            <xf:item>
+              <xf:label>alamsaksa</xf:label>
+              <xf:value>alamsaksa</xf:value>
+            </xf:item>
+          </xf:select1>
+          
+          <xf:input ref="instance('hans-instance')/hans:A/hans:agrp/hans:akk" incremental="true">
+            <xf:label><xf:output value="itext('label-akk')"/></xf:label>
+            <xf:hint><xf:output value="itext('hint-akk')"/></xf:hint>
+          </xf:input>
+          
+          <xf:input ref="instance('hans-instance')/hans:A/hans:agrp/hans:kgrp/hans:kn" incremental="true">
+            <xf:label><xf:output value="itext('label-kn')"/></xf:label>
+            <xf:hint><xf:output value="itext('hint-kn')"/></xf:hint>
+          </xf:input>
+          
+          <xf:textarea ref="instance('hans-instance')/hans:A/hans:agrp/hans:kgrp/hans:kmark" incremental="true">
+            <xf:label><xf:output value="itext('label-kmark')"/></xf:label>
+            <xf:hint><xf:output value="itext('hint-kmark')"/></xf:hint>
+          </xf:textarea>
+          
+          <xf:group>
+          <xf:repeat id="links" nodeset="instance('hans-instance')/hans:A/hans:lgrp/hans:link">
+            <xf:input ref="." incremental="true">
+              <xf:label><xf:output value="itext('label-link')"/></xf:label>
+              <xf:hint><xf:output value="itext('hint-link')"/></xf:hint>
+            </xf:input>
+            <xf:trigger>
+              <xf:label><xf:output value="itext('label-link-kustuta')"/></xf:label>
+              <xf:delete ev:event="DOMActivate" 
+                         ref="instance('hans-instance')/hans:A/hans:lgrp/hans:link" at="index('links')"/>
+            </xf:trigger>
+          </xf:repeat>
+          <xf:trigger>
+            <xf:label><xf:output value="itext('label-link-lisa')"/></xf:label>
+            <xf:insert ev:event="DOMActivate" position="after" at="index('links')"
+                       ref="instance('hans-instance')/hans:A/hans:lgrp/hans:link"
+                       origin="instance('multiple-link-template')/hans:link"/>
+          </xf:trigger>
+          </xf:group>
+          
+            <xf:upload ref="instance('hans-instance')/hans:A/hans:fgrp/hans:ffail[last()]" incremental="true">
+              <xf:filename ref="@hans:filename"/>
+              <xf:label><xf:output value="itext('label-file')"/></xf:label>
+              <xf:hint><xf:output value="itext('hint-file')"/></xf:hint>
+              <xf:insert ev:event="xforms-value-changed" ref="instance('hans-instance')/hans:A/hans:fgrp/hans:ffail"
+                         position="after"
+                         origin="instance('multiple-file-template')/hans:ffail"/>
+            </xf:upload>
+            
+          <xf:repeat id="files" nodeset="instance('hans-instance')/hans:A/hans:fgrp/hans:ffail[position() &gt; 1]">
+            <xf:output value="position()"/>
+            <xf:output value="@hans:filename"/>
+            <xf:trigger>
+              <xf:label><xf:output value="itext('label-file-kustuta')"/></xf:label>
+              <xf:delete ev:event="DOMActivate" 
+                         ref="instance('hans-instance')/hans:A/hans:fgrp/hans:ffail" at="index('files')"/>
+            </xf:trigger>
+          </xf:repeat>
+          <!--
+          <xf:trigger>
+            <xf:label><xf:output value="itext('label-file-lisa')"/></xf:label>
+            <xf:insert ev:event="DOMActivate" position="after" at="index('files')"
+                       ref="instance('hans-instance')/hans:A/hans:fgrp/hans:ffail"
+                       origin="instance('multiple-file-template')/hans:ffail"/>
+          </xf:trigger>
+          -->
+
+       </fieldset>
+       <xf:submit submission="submit">
+         <xf:label><xf:output value="itext('label-submit')"/></xf:label>
+       </xf:submit>
+     </xf:group>
+     <xf:output ref="hans:A" />
+   </body>
+</html>

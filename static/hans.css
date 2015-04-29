@@ -1,0 +1,196 @@
+.vka_A {
+	padding: 10px;
+	font-family: sans-serif;
+}
+
+.leiu_info_narratiiv {
+	padding: 10px;
+}
+
+.vka_arakiri {
+	background-color: lightgoldenrodyellow;
+	font-family: serif;
+	padding: 10px;
+}
+
+.vka_kirjeldus {
+	padding: 10px
+}
+
+.vka_tkom {
+	padding: 10px
+}
+
+th {
+	font-family: "Raleway",sans-serif;
+	font-weight: 300;
+	background-color: lightblue;
+}
+
+td {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	width: auto;
+}
+
+td.date {
+	width: 100%;
+	max-width: 10%;
+}
+div.date {
+	width: inherit;
+}
+.date {
+	font: small-caps 12px monospace;
+}
+
+
+td.arakiri-tekst {
+	width: 100%;
+	max-width: 10px;
+}
+div.arakiri-tekst {
+	width: inherit;
+	overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.arakiri-tekst {
+		font: italic 12px Georgia, serif;
+}
+
+
+td.nimi {
+	width:     100%;
+	max-width: 100px;
+}
+div.nimi {
+	width: inherit;
+	overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.nimi {
+	font: italic bold 12px Georgia, serif;
+}
+
+td.viide {
+	width: 100%;
+	max-width: 100px;
+}
+div.viide {
+	width: inherit;
+	overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.viide {
+	font: small-caps 12px monospace;
+}
+
+h1 {
+	clear: left;
+	font-family: "Raleway",sans-serif;
+	font-weight: 300;
+}
+
+.icon-left {
+	background-image: url(media/hans-icon.svg);
+	background-repeat: no-repeat;
+	background-size: 1em;
+	padding-left: 1em;
+	display: block;
+}
+
+h2 {
+	clear: left;
+	font-family: "Raleway",sans-serif;
+	font-weight: 300;
+}
+
+h3 {
+	clear: left;
+	font-family: "Raleway",sans-serif;
+	font-weight: 300;
+}
+
+hr {
+	clear: both;
+	color: gray;
+	border: 0px;
+	border-bottom: 1px dashed;
+	height: 1px;
+}
+
+p {
+	width: 85%
+}
+
+label {
+	cursor: pointer;
+}
+
+.form-element {
+	margin: 2px;
+	border: 1px lightblue solid;
+	float: left;
+	width: 30%;
+	display: block;
+	min-width: 300px;
+	font-family: arial;
+}
+
+.form-text {
+	font-size: smaller;
+}
+
+.form-help {
+	font-style: italic;
+	font-size: small;
+	color: gray;
+}
+
+.form-section {
+	border: 1px dashed red;
+}
+
+a {
+	font-family: "Raleway",sans-serif;
+	font-weight: 300;
+}
+
+ul {
+	list-style-type: square;
+}
+
+
+/* used to give focus to table headings */
+th:hover { background: #e4eef0; cursor: pointer }
+
+/* used for tool tips */
+.tooltip {
+	background: #96433D;
+	color: white;
+	font-size: 8pt;
+	font-style:normal;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Raleway Thin'), local('Raleway-Thin'), url(http://fonts.gstatic.com/s/raleway/v9/RJMlAoFXXQEzZoMSUteGWFtXRa8TVwTICgirnJhmVJw.woff2) format('woff2'), url(http://fonts.gstatic.com/s/raleway/v9/RJMlAoFXXQEzZoMSUteGWD8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Raleway Light'), local('Raleway-Light'), url(http://fonts.gstatic.com/s/raleway/v9/-_Ctzj9b56b8RgXW8FArifk_vArhqVIZ0nv9q090hN8.woff2) format('woff2'), url(http://fonts.gstatic.com/s/raleway/v9/-_Ctzj9b56b8RgXW8FAriRsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Raleway SemiBold'), local('Raleway-SemiBold'), url(http://fonts.gstatic.com/s/raleway/v9/xkvoNo9fC8O2RDydKj12b_k_vArhqVIZ0nv9q090hN8.woff2) format('woff2'), url(http://fonts.gstatic.com/s/raleway/v9/xkvoNo9fC8O2RDydKj12bxsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+}
