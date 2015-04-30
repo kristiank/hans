@@ -24,6 +24,52 @@ declare variable $eelex:hans-db   := "hans";
 declare variable $eelex:hans-path := "vka1.xml";
 declare variable $eelex:hans-ns   := "http://www.eki.ee/dict/vka";
 
+(: Estonian is morphologically rich ... :)
+declare variable $eelex:arhiivid  := <data>
+    <arhiiv nimi="EAA">
+      <nimetav>Eesti Ajalooarhiiv</nimetav>
+      <omastav>Eesti Ajalooarhiivi</omastav>
+      <seesütlev>Eesti Ajalooarhiivis</seesütlev>
+      <väljaütlev>Eesti Ajalooarhiivist</väljaütlev>
+    </arhiiv>
+    <arhiiv nimi="AM">
+      <nimetav>Eesti Ajaloomuuseum</nimetav>
+      <omastav>Eesti Ajaloomuuseumi</omastav>
+      <seesütlev>Eesti Ajaloomuuseumis</seesütlev>
+      <väljaütlev>Eesti Ajaloomuuseumist</väljaütlev>
+    </arhiiv>
+    <arhiiv nimi="EKLA">
+      <nimetav>Eesti Kultuurilooline Arhiiv</nimetav>
+      <omastav>Eesti Kultuuriloolise Arhiivi</omastav>
+      <seesütlev>Eesti Kultuuriloolises Arhiivis</seesütlev>
+      <väljaütlev>Eesti Kultuuriloolisest Arhiivist</väljaütlev>
+    </arhiiv>
+    <arhiiv nimi="LVVA">
+      <nimetav>Läti Riiklik Ajalooarhiiv</nimetav>
+      <omastav>Läti Riikliku Ajalooarhiivi</omastav>
+      <seesütlev>Läti Riiklikus Ajalooarhiivis</seesütlev>
+      <väljaütlev>Läti Riiklikust Ajalooarhiivist</väljaütlev>
+    </arhiiv>
+    <arhiiv nimi="SRA">
+      <nimetav>Rootsi Riigiarhiiv</nimetav>
+      <omastav>Rootsi Riigiarhiivi</omastav>
+      <seesütlev>Rootsi Riigiarhiivis</seesütlev>
+      <väljaütlev>Rootsi Riigiarhiivist</väljaütlev>
+    </arhiiv>
+    <arhiiv nimi="TLA">
+      <nimetav>Tallinna Linnaarhiiv</nimetav>
+      <omastav>Tallinna Linnaarhiivi</omastav>
+      <seesütlev>Tallinna Linnaarhiivis</seesütlev>
+      <väljaütlev>Tallinna Linnaarhiivist</väljaütlev>
+    </arhiiv>
+    <arhiiv nimi="muu">
+      <nimetav>kuskil</nimetav>
+      <omastav>mingi</omastav>
+      <seesütlev>kuskil</seesütlev>
+      <väljaütlev>kuskilt</väljaütlev>
+    </arhiiv>
+</data>;
+
 
 (:~
  : Internal function giving an id for a new database entry.
@@ -705,14 +751,14 @@ function eelex:rss-last-added(
         let $link := 'http://hans.eki.ee/view?id=' || string($entry//vka:m)
         return
           <item>
-            <title>Leitud {string($entry//vka:saj)}.&#160;sajandist pärinev {string($entry//vka:akeel)}&#173;keelne tekst ARHIIVINIMIst</title>
+            <title>Põnev tekst {string($entry//vka:saj)}.&#160;sajandist leiti {$eelex:arhiivid/arhiiv[@nimi = $entry//vka:a]/väljaütlev/data()}</title>
             <link>{$link}</link>
             <guid>{$link}</guid>
             <pubDate>
               {format-dateTime(xs:dateTime($entry//vka:KA),
                 '[FNn,*-3], [D01] [MNn,*-3] [Y0001] [H01]:[m01]:[s01] GMT')}
             </pubDate>
-            <description>Arhiivis tuhnis {string($entry//vka:snimi)}. <a href="{$link}">Vaata lähemalt leiu lehelt</a>.</description>
+            <description>Teksti leidis {tokenize($entry//snimi)[1]} tuhnides {string($entry//vka:akeel)}&#173;keelset ürikut {$eelex:arhiivid/arhiiv[@nimi = $entry//vka:a]/seesütlev/data()}. <a href="{$link}">Vaata lähemalt leiu lehelt</a>.</description>
           </item>
       }
       </channel>
