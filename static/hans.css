@@ -62,7 +62,10 @@ div.arakiri-tekst {
 .arakiri-tekst {
 		font: italic 12px Georgia, serif;
 }
-
+.arakiri-tekst a {
+	text-decoration: none;
+	color: black;
+}
 
 td.nimi {
 	width:     100%;
