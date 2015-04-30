@@ -43,10 +43,11 @@
             <xsl:variable name="arakiri-tekst" select="substring(vka:tgrp/vka:arakiri, 1, 150)"/>
             <xsl:variable name="viide" select="vka:agrp/vka:viide"/>
             <xsl:variable name="nimi" select="vka:sgrp/vka:snimi"/>
+            <xsl:variable name="id" select="string(.//vka:m)"/>
             <xsl:variable name="uri" select="concat('show?id=', .//vka:m)"/>
             <tr data-uri="{$uri}">
               <td class="date" data-sort-value="{$date}"><div class="date" align="center"><xsl:value-of select="format-date($date, '[D].[M].[Y]')"/></div></td>
-              <td class="arakiri-tekst" data-sort-value="{$arakiri-tekst}"><div class="arakiri-tekst"><xsl:value-of select="$arakiri-tekst"/> ...</div></td>
+              <td class="arakiri-tekst" data-sort-value="{$arakiri-tekst}"><div class="arakiri-tekst"><a href="view?id={$id}"><xsl:value-of select="$arakiri-tekst"/></a></div></td>
               <td class="viide" data-sort-value="{$viide}"><div class="viide"><xsl:value-of select="$viide"/></div></td>
               <td class="nimi" data-sort-value="{$nimi}"><div class="nimi"><xsl:value-of select="$nimi"/></div></td>
             </tr>
