@@ -546,7 +546,7 @@ function eelex:web-last-added(
 
 
 (:~
- : Web interface showing an entry's details.
+ : Web interface showing an entry's details in a narrative tone.
  :
  : @since 1.0
  : @param id The id of the entry
@@ -557,7 +557,7 @@ declare
   %rest:path("view")
   %rest:query-param("id", "{$id}", "0")
   %output:method('html')
-function eelex:web-view-details(
+function eelex:web-view-narrative(
   $id as xs:integer
 )
 {
@@ -570,7 +570,44 @@ function eelex:web-view-details(
         with ("HANS leid " || $id),
       insert node (attribute {"src"} {"static/hans-show.xsl"})
         into $template//script[@language="xslt2.0"],
-      insert node (attribute {"data-initial-template"} {"show-info"})
+      insert node (attribute {"data-initial-template"} {"show-info-narrative"})
+        into $template//script[@language="xslt2.0"],
+      insert node (attribute {"data-source"} {"xml?id=" || $id})
+        into $template//script[@language="xslt2.0"],
+      insert node $content into $template//*:div[@id = 'content']
+    ) return $template
+  
+  return $page
+};
+
+
+
+(:~
+ : Web interface showing an entry's details in a detailed tone.
+ :
+ : @since 1.1
+ : @param id The id of the entry
+ : @return HTML
+ :)
+declare
+  %rest:GET
+  %rest:path("view-detailed")
+  %rest:query-param("id", "{$id}", "0")
+  %output:method('html')
+function eelex:web-view-detailed(
+  $id as xs:integer
+)
+{
+  let $content := ('')
+  let $page := 
+    copy $template := fetch:xml(concat(file:base-dir(),
+                                'hans-template.html'))
+    modify(
+      replace value of node $template/html/head/title
+        with ("HANS leid " || $id),
+      insert node (attribute {"src"} {"static/hans-show.xsl"})
+        into $template//script[@language="xslt2.0"],
+      insert node (attribute {"data-initial-template"} {"show-info-detailed"})
         into $template//script[@language="xslt2.0"],
       insert node (attribute {"data-source"} {"xml?id=" || $id})
         into $template//script[@language="xslt2.0"],

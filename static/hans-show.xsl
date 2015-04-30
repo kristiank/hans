@@ -13,15 +13,22 @@
   >
   <xsl:import href="hans.xsl"/>
 
-  <!-- Genereeri ühe leiu info vaade -->
-  <xsl:template name="show-info" match="/">
+  <!-- Genereeri ühe leiu narratiivne vaade -->
+  <xsl:template name="show-info-narrative" match="/">
     <xsl:result-document href="#content" method="ixsl:replace-content">
-      <xsl:apply-templates select="//vka:A"/>
+      <xsl:apply-templates select="//vka:A" mode="narrative"/>
     </xsl:result-document>
   </xsl:template>
   
-  <!-- Infovaate A element (artikkel) -->
-  <xsl:template match="vka:A">
+  <!-- Genereeri ühe leiu üksikasjalik vaade -->
+  <xsl:template name="show-info-detailed" match="/">
+    <xsl:result-document href="#content" method="ixsl:replace-content">
+      <xsl:apply-templates select="//vka:A" mode="detailed"/>
+    </xsl:result-document>
+  </xsl:template>
+  
+  <!-- Artikli narratiivne vaade -->
+  <xsl:template match="vka:A" mode="narrative">
     <xsl:result-document href="#content" method="ixsl:append-content">
       <h2>Keeleleid nr #<xsl:value-of select="vka:m"/></h2>
       <div class="vka_A">
@@ -32,62 +39,42 @@
         <xsl:if test="not(empty(vka:tgrp/vka:kirjeldus))"><div class="vka_kirjeldus">Tekstile on lisatud kirjeldus: <xsl:value-of select="vka:tgrp/vka:kirjeldus"/></div></xsl:if>
         <xsl:if test="not(empty(vka:tgrp/vka:tkom))"><div class="vka_tkom">Teksti ja selle konteksti seletavaid kommentaare: <xsl:value-of select="vka:tgrp/vka:tkom"/></div></xsl:if>
         <xsl:if test="not(empty(.//vka:ffail))"><div class="vka_ffail"><a href="raw/{vka:m}/{.//vka:ffail}">Vaata leiule lisatud pilti.</a></div></xsl:if>
-        <a href="edit?id={vka:m}">Toimeta leiu andmeid</a> <a href="details?id={vka:m}">Vaata täpsemaid andmeid</a> <a href="xml?id={vka:m}">Vaata andmete XMLi</a>
+        <a href="edit?id={vka:m}">Toimeta leiu andmeid</a>. <a href="view-detailed?id={vka:m}">Vaata täpsemaid andmeid</a>. <a href="xml?id={vka:m}">Vaata andmete XMLi</a>.
       </div>
     </xsl:result-document>
   </xsl:template>
   
-  <!-- Infovaate m element (märksõna) -->
-  <xsl:template match="vka:m">
+  
+  
+  <!-- Artikli üksikasjalik vaade -->
+  <xsl:template match="vka:A" mode="detailed">
     <xsl:result-document href="#content" method="ixsl:append-content">
-      <div class="vka_m">
-        Viide <xsl:value-of select="string(.)"/>. leiule
-      </div>
-      
+      <h2>Keeleleid nr #<xsl:value-of select="vka:m"/></h2>
+      <table>
+        <thead><tr><th>Väli</th><th>Väärtus</th></tr></thead>
+        <tbody>
+          <tr><td>m</td><td><xsl:value-of select="//vka:m"/></td></tr>
+          <tr><td>snimi</td><td><xsl:value-of select="//vka:snimi"/></td></tr>
+          <tr><td>arakiri</td><td><xsl:value-of select="//vka:arakiri"/></td></tr>
+          <tr><td>kirjeldus</td><td><xsl:value-of select="//vka:kirjeldus"/></td></tr>
+          <tr><td>tkom</td><td><xsl:value-of select="//vka:tkom"/></td></tr>
+          <tr><td>a</td><td><xsl:value-of select="//vka:a"/></td></tr>
+          <tr><td>f</td><td><xsl:value-of select="//vka:f"/></td></tr>
+          <tr><td>fondinimi</td><td><xsl:value-of select="//vka:fondinimi"/></td></tr>
+          <tr><td>n</td><td><xsl:value-of select="//vka:n"/></td></tr>
+          <tr><td>s</td><td><xsl:value-of select="//vka:s"/></td></tr>
+          <tr><td>l</td><td><xsl:value-of select="//vka:l"/></td></tr>
+          <tr><td>saj</td><td><xsl:value-of select="//vka:saj"/></td></tr>
+          <tr><td>akeel</td><td><xsl:value-of select="//vka:akeel"/></td></tr>
+          <tr><td>kn</td><td><xsl:value-of select="//vka:kn"/></td></tr>
+          <tr><td>ffail</td><td><xsl:for-each select="//vka:ffail"><xsl:value-of select="."/><xsl:text>; </xsl:text></xsl:for-each></td></tr>
+          <tr><td>link</td><td><xsl:for-each select="//vka:link"><xsl:value-of select="."/><xsl:text>; </xsl:text></xsl:for-each></td></tr>
+          <tr><td>KA</td><td><xsl:value-of select="//vka:snimi"/></td></tr>
+          <tr><td>TA</td><td><xsl:for-each select="//vka:TA"><xsl:value-of select="."/><xsl:text>; </xsl:text></xsl:for-each></td></tr>
+        </tbody>
+      </table>
     </xsl:result-document>
   </xsl:template>
 
-  <!-- Infovaate sgrp element () -->
-  <xsl:template match="vka:sgrp">
-    <xsl:result-document href="#content" method="ixsl:append-content">
-      <div class="vka_sgrp">
-        <div class="vka_snimi">
-          Tubliks sisestajaks oli <xsl:value-of select="vka:snimi"/>.
-        </div>
-      </div>
-      <xsl:apply-templates/>
-    </xsl:result-document>
-  </xsl:template>
-  
-  <!-- Infovaate viite genereerimine -->
-  <xsl:template match="vka:agrp">
-    <xsl:result-document href="#content" method="ixsl:append-content">
-      Arhiiviviide: <xsl:call-template name="vka:viide"/>.
-    </xsl:result-document>
-  </xsl:template>
-  
-  <!-- Infovaate sajandi genereerimine -->
-  <xsl:template match="vka:viide" name="vka:viide">
-    <xsl:result-document href="#content" method="ixsl:append-content">
-      <div class="vka_viide"><xsl:value-of select="string(.)"/></div>
-    </xsl:result-document>
-  </xsl:template>
-  
-  <!-- Infovaate sajandi genereerimine -->
-  <xsl:template match="vka:dgrp">
-    <xsl:result-document href="#content" method="ixsl:append-content">
-      <xsl:value-of select="string(vka:saj)"/>. sajand.
-    </xsl:result-document>
-  </xsl:template>
-  
-  <!-- Infovaate keele genereerimine -->
-  <xsl:template match="vka:akeel">
-    <xsl:result-document href="#content" method="ixsl:append-content">
-      <xsl:value-of select="string(.)"/>ikeelne tekst.
-    </xsl:result-document>
-  </xsl:template>
-  
-  <!-- See blokib nende elementide näitamist, millel pole määratud oma template -->
-  <xsl:template match="*"/>
 
 </xsl:transform>
