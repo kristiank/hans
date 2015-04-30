@@ -452,6 +452,5 @@
          <xf:label><xf:output value="itext('label-submit')"/></xf:label>
        </xf:submit>
      </xf:group>
-     <xf:output ref="hans:A" />
    </body>
 </html>

@@ -3,6 +3,10 @@
 	font-family: sans-serif;
 }
 
+.vka_viide {
+	font: italic small-caps 0.9em serif;
+}
+
 .leiu_info_narratiiv {
 	padding: 10px;
 }

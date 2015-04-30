@@ -127,8 +127,7 @@ updating function eelex:save-new-entry(
   let $final-entry := $with-id
   (:@todo check schema conformity:)
   return
-    (db:output(web:redirect("update",
-               map{'id': $new-id})),
+    (db:output('Salvestatud!'),
     insert node $final-entry
       as last into $db
     )
@@ -157,18 +156,19 @@ updating function eelex:update-entry(
   (: @todo check if entry exists! :)
   let $old-entry := db:open($eelex:hans-db, $eelex:hans-path)/vka:sr
       /vka:A[vka:m/@vka:O = $entry-id]
-  return
+  
+  return 
     replace node $old-entry
-    with copy $updated-entry := $old-entry
+      with copy $updated-entry := $old-entry
       modify (
-        for $element in $input-doc/(* except (*:m, *:sgrp, *:G, *:K, *:KA))
+        for $element in $input-doc/(* except (*:m, *:sgrp, *:G, *:K, *:KA, *:TA))
           return
             if($element instance of element())
             then(
               if($updated-entry/*[node-name(.) = node-name($element)])
               then(replace node $updated-entry/*[node-name(.) = node-name($element)]
-                   with $element)
-              else() (:insert node $element into $updated-entry:)
+                   with ($element))
+              else(insert node $element into $updated-entry)
             )
             else(),
         (: insert a datetime stamp for the edit :)
@@ -190,18 +190,19 @@ declare
   %rest:path("update-entry")
   %rest:POST("{$data}")
 updating function eelex:web-update-entry(
-  $data as document-node()
+  $data (: as document-node() :)
 )
 {
   let $id := xs:positiveInteger($data//vka:m)
   let $new-entry := $data//vka:A
   let $old-entry := eelex:get-by-id($id)/vka:A
-  (: @todo check if email is the same :)
   
   return
-    (db:output(web:redirect("update",
-           map{'id': $id})),
-     eelex:update-entry($id, $new-entry))
+    (: @todo check if email is the same :)
+    if(not($old-entry//vka:skontakt = $new-entry//vka:skontakt))
+    then(db:output('vale epostiaadress'))
+    else((db:output('Toimetatud!'),
+     eelex:update-entry($id, $new-entry)))
 };
 
 (:~
@@ -442,7 +443,7 @@ function eelex:web-save-xforms(
  :)
 declare
   %rest:GET
-  %rest:path("update")
+  %rest:path("edit")
   %rest:query-param("id", "{$id}", "0")
   %output:method("xml")
 function eelex:web-update-xforms(
@@ -451,7 +452,7 @@ function eelex:web-update-xforms(
 {
   if(not($id > 0))
   then(<hans:error>
-         <message>id number puudub</message>
+         <message>Leiu id number puudub</message>
        </hans:error>)
   else
     copy $page := fetch:xml(
@@ -553,10 +554,10 @@ function eelex:web-last-added(
  :)
 declare
   %rest:GET
-  %rest:path("show")
+  %rest:path("view")
   %rest:query-param("id", "{$id}", "0")
   %output:method('html')
-function eelex:web-show-details(
+function eelex:web-view-details(
   $id as xs:integer
 )
 {
@@ -597,7 +598,7 @@ function eelex:privatize-xml(
     delete node $filtered//vka:G,
     delete node $filtered//vka:K,
     delete node $filtered//vka:T,
-    delete node $filtered//vka:skontakt,
+    replace value of node $filtered//vka:skontakt with '',
     delete node $filtered//vka:slink
   )
   return $filtered
@@ -664,7 +665,7 @@ function eelex:rss-last-added(
       <webMaster>kristian@eki.ee</webMaster>
       {
       for $entry in $entries
-        let $link := 'http://hans.eki.ee/show?id=' ||string($entry//vka:m)
+        let $link := 'http://hans.eki.ee/view?id=' || string($entry//vka:m)
         return
           <item>
             <title>Leitud {string($entry//vka:saj)}.&#160;sajandist pärinev {string($entry//vka:akeel)}&#173;keelne tekst ARHIIVINIMIst</title>
@@ -674,7 +675,7 @@ function eelex:rss-last-added(
               {format-dateTime(xs:dateTime($entry//vka:KA),
                 '[FNn,*-3], [D01] [MNn,*-3] [Y0001] [H01]:[m01]:[s01] GMT')}
             </pubDate>
-            <description>Arhiivis tuhmis {string($entry//vka:snimi)}. <a href="{$link}">Vaata lähemalt leiu lehelt</a>.</description>
+            <description>Arhiivis tuhnis {string($entry//vka:snimi)}. <a href="{$link}">Vaata lähemalt leiu lehelt</a>.</description>
           </item>
       }
       </channel>

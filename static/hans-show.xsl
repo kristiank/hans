@@ -27,11 +27,12 @@
       <div class="vka_A">
         <xsl:if test="not(empty(vka:tgrp/vka:arakiri))"><div class="vka_arakiri"><xsl:value-of select="vka:tgrp/vka:arakiri"/></div></xsl:if>
         <div class="leiu_info_narratiiv">Selle <xsl:value-of select="vka:agrp/vka:dgrp/vka:saj"/>.&#160;sajandi teksti leidis <xsl:value-of select="vka:sgrp/vka:snimi"/> tuhnides üht <xsl:value-of select="vka:agrp/vka:akeel"/>&#173;keelset arhivaari. 
-        <xsl:value-of select="substring-before(vka:sgrp/vka:snimi, ' ')"/> registreeris leiu Hansus <xsl:value-of select="format-date(vka:KA, '[D].[M].[Y]')"/>.<br/>
-        Leiule võib viidata tekstiliselt „<span class="vka_viide"><xsl:value-of select="hans:vormista-viide(vka:agrp/vka:viide)"/></span>“ või püsi&#173;lingiga „<a href="http://hans.eki.ee/id/{vka:m}">http://hans.eki.ee/id/<xsl:value-of select="vka:m"/></a>“. Loe viitamise kohta rohkem <a>siit</a>.</div>
+        <xsl:value-of select="tokenize(vka:sgrp/vka:snimi, '\s+')[1]"/> registreeris leiu Hansus <xsl:value-of select="format-date(vka:KA, '[D].[M].[Y]')"/>.<br/>
+        Leiule võib viidata tekstiliselt „<span class="vka_viide"><xsl:value-of select="hans:vormista-viide(vka:agrp/vka:viide)"/></span>“ või püsi&#173;lingiga „<a href="http://hans.eki.ee/id/{vka:m}">http://hans.eki.ee/id/<xsl:value-of select="vka:m"/></a>“. Leidudele viitamise kohta võid lugeda rohkem <a href="citing">siit</a>.</div>
         <xsl:if test="not(empty(vka:tgrp/vka:kirjeldus))"><div class="vka_kirjeldus">Tekstile on lisatud kirjeldus: <xsl:value-of select="vka:tgrp/vka:kirjeldus"/></div></xsl:if>
         <xsl:if test="not(empty(vka:tgrp/vka:tkom))"><div class="vka_tkom">Teksti ja selle konteksti seletavaid kommentaare: <xsl:value-of select="vka:tgrp/vka:tkom"/></div></xsl:if>
         <xsl:if test="not(empty(.//vka:ffail))"><div class="vka_ffail"><a href="raw/{vka:m}/{.//vka:ffail}">Vaata leiule lisatud pilti.</a></div></xsl:if>
+        <a href="edit?id={vka:m}">Toimeta leiu andmeid</a> <a href="details?id={vka:m}">Vaata täpsemaid andmeid</a> <a href="xml?id={vka:m}">Vaata andmete XMLi</a>
       </div>
     </xsl:result-document>
   </xsl:template>
