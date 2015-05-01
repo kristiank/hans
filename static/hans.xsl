@@ -13,7 +13,52 @@
   >
   <!-- URList saadud argumendid -->
   <xsl:variable name="args" select="f:parse-uri()"/>
-
+  
+  <!-- Arhiivide nimetused ja nende käändevorme -->
+  <xsl:variable name="arhiivid">
+    <arhiiv nimi="EAA">
+      <nimetav>Eesti Ajalooarhiiv</nimetav>
+      <omastav>Eesti Ajalooarhiivi</omastav>
+      <seesütlev>Eesti Ajalooarhiivis</seesütlev>
+      <väljaütlev>Eesti Ajalooarhiivist</väljaütlev>
+    </arhiiv>
+    <arhiiv nimi="AM">
+      <nimetav>Eesti Ajaloomuuseum</nimetav>
+      <omastav>Eesti Ajaloomuuseumi</omastav>
+      <seesütlev>Eesti Ajaloomuuseumis</seesütlev>
+      <väljaütlev>Eesti Ajaloomuuseumist</väljaütlev>
+    </arhiiv>
+    <arhiiv nimi="EKLA">
+      <nimetav>Eesti Kultuurilooline Arhiiv</nimetav>
+      <omastav>Eesti Kultuuriloolise Arhiivi</omastav>
+      <seesütlev>Eesti Kultuuriloolises Arhiivis</seesütlev>
+      <väljaütlev>Eesti Kultuuriloolisest Arhiivist</väljaütlev>
+    </arhiiv>
+    <arhiiv nimi="LVVA">
+      <nimetav>Läti Riiklik Ajalooarhiiv</nimetav>
+      <omastav>Läti Riikliku Ajalooarhiivi</omastav>
+      <seesütlev>Läti Riiklikus Ajalooarhiivis</seesütlev>
+      <väljaütlev>Läti Riiklikust Ajalooarhiivist</väljaütlev>
+    </arhiiv>
+    <arhiiv nimi="SRA">
+      <nimetav>Rootsi Riigiarhiiv</nimetav>
+      <omastav>Rootsi Riigiarhiivi</omastav>
+      <seesütlev>Rootsi Riigiarhiivis</seesütlev>
+      <väljaütlev>Rootsi Riigiarhiivist</väljaütlev>
+    </arhiiv>
+    <arhiiv nimi="TLA">
+      <nimetav>Tallinna Linnaarhiiv</nimetav>
+      <omastav>Tallinna Linnaarhiivi</omastav>
+      <seesütlev>Tallinna Linnaarhiivis</seesütlev>
+      <väljaütlev>Tallinna Linnaarhiivist</väljaütlev>
+    </arhiiv>
+    <arhiiv nimi="muu">
+      <nimetav>kuskil</nimetav>
+      <omastav>mingi</omastav>
+      <seesütlev>kuskil</seesütlev>
+      <väljaütlev>kuskilt</väljaütlev>
+    </arhiiv>
+  </xsl:variable>
   
   <!-- Sõelu URLiga saadud argumendid -->
   <xsl:function name="f:parse-uri">
