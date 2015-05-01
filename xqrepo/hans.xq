@@ -431,7 +431,7 @@ function eelex:simple-search(
   then ()
   else
     let $results := db:open($eelex:hans-db, $eelex:hans-path)/vka:sr
-      //(vka:agrp|vka:tgrp|vka:fgrp|vka:lgrp|vka:KOM)[fn:matches(., $q)]
+      //(vka:agrp|vka:tgrp|vka:fgrp|vka:lgrp|vka:KOM)[fn:matches(., $q, 'smi')]
       //parent::*:A
     for $result in $results
     return
