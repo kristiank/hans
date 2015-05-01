@@ -792,8 +792,15 @@ declare updating function eelex:import-from-EELex(
           with substring($century, 1, 2)
       (: normalize old text substitutions :)
       ,for $text in $eelex-db//vka:tgrp/(vka:arakiri|vka:kirjeldus|vka:tkom)
-        let $new-text := replace(normalize-space($text), "&amp;br;", out:nl())
-        return replace value of node $text
+        (: let $norm-text1 := replace($text, "&#xA;", '') :)
+        (: let $norm-text2 := replace($norm-text1, "&#xD;", '') :)
+        let $norm-text := replace($text, "&amp;br;", out:nl())
+        let $new-text := 
+          element {node-name($text)} {
+            for $line in tokenize($norm-text, "[\n\r]+")
+              return element {'p'} {$line}
+          }
+        return replace node $text
           with $new-text
     )
     return $eelex-db
