@@ -212,6 +212,9 @@
           </xf:translation>
         </xf:itext>
         
+        <xf:action ev:event="xforms-ready">
+          <xf:setfocus control="autofocus" />
+        </xf:action>
       </xf:model>
       
    </head>
@@ -220,7 +223,7 @@
        <fieldset>
          <legend><xf:output value="itext('legend-kontaktandmed')"/></legend>
          <xf:group>
-           <xf:input ref="instance('hans-instance')/hans:A/hans:sgrp/hans:snimi" incremental="true">
+           <xf:input ref="instance('hans-instance')/hans:A/hans:sgrp/hans:snimi" incremental="true" id="autofocus">
              <xf:label><xf:output value="itext('label-snimi')"/></xf:label>
              <xf:hint><xf:output value="itext('hint-snimi')"/></xf:hint>
            </xf:input>
