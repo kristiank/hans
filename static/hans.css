@@ -13,15 +13,17 @@
 
 .vka_arakiri {
 	background-color: lightgoldenrodyellow;
-	font-family: Georgia, serif;
+	font-family: 'New Century Schoolbook', Georgia, serif;
 	padding: 10px;
-	font-weight: 100;
+	font-weight: 200;
+	font-style: italic;
 	text-align: center;
 	font-size: 20px;
 }
 
 .vka_arakiri p {
 	margin: 5;
+	font: inherit;
 }
 
 .vka_kirjeldus {
