@@ -592,6 +592,28 @@ function eelex:web-last-added(
 
 
 (:~
+ : Web access for persistant id-s.
+ : Currently redirects to the entry's narrative view.
+ :
+ : @since 1.1
+ : @param id The id of the entry
+ : @return HTML
+ :)
+declare
+  %rest:GET
+  %rest:path("id/{$id}")
+  %output:method('html')
+function eelex:web-pid-access(
+  $id as xs:integer
+)
+{
+  web:redirect(
+    web:create-url("../view", map {"id": $id}))
+};
+
+
+
+(:~
  : Web interface showing an entry's details in a narrative tone.
  :
  : @since 1.0
