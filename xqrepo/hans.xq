@@ -819,8 +819,10 @@ declare updating function eelex:import-from-EELex(
         let $norm-text := replace($text, "&amp;br;", out:nl())
         let $new-text := 
           element {node-name($text)} {
-            for $line in tokenize($norm-text, "[\n\r]+")
-              return element {'p'} {$line}
+            concat( "&lt;p&gt;",
+                    string-join(tokenize($norm-text, "[\n\r]+"),
+                                "&lt;/p&gt;&lt;p&gt;"),
+                    "&lt;/p&gt;")
           }
         return replace node $text
           with $new-text
