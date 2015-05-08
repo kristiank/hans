@@ -39,13 +39,13 @@
           <annotation>
             <appinfo>
               {
-	        entity_encoding: "raw",
+                entity_encoding: "raw",
                 plugins: [
-                  "advlist autolink lists link image charmap print preview anchor",
-                  "searchreplace visualblocks code fullscreen",
-                  "insertdatetime media table contextmenu paste"
+                  "autolink lists link charmap",
+                  "searchreplace code fullscreen",
+                  "insertdatetime paste"
                 ],
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+                toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link"
               }
             </appinfo>
           </annotation>
