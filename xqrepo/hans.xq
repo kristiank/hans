@@ -524,9 +524,19 @@ function eelex:get-by-id(
   $id as xs:integer
 )
 {
-  let $entry := db:open($eelex:hans-db, $eelex:hans-path)
-      /vka:sr/vka:A/vka:m[. = $id]
-      /parent::vka:A
+  let $entry := 
+    copy $tinymce-serialization := 
+      db:open($eelex:hans-db, $eelex:hans-path)
+        /vka:sr/vka:A/vka:m[. = $id]
+        /parent::vka:A
+    modify (
+      (:
+      replace value of node $tinymce-serialization//vka:arakiri
+        with parse-xml($tinymce-serialization//vka:arakiri)
+      :)
+    )
+    return $tinymce-serialization
+      
   return
     <vka:sr>{
       if(empty($entry))
