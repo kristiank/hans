@@ -39,6 +39,7 @@
           <annotation>
             <appinfo>
               {
+                element_format : "xhtml",
                 browser_spellcheck: true,
                 entity_encoding: "raw",
                 plugins: [
@@ -46,7 +47,8 @@
                   "searchreplace code fullscreen",
                   "insertdatetime paste"
                 ],
-                toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link"
+                toolbar: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | charmap",
+                statusbar : false
               }
             </appinfo>
           </annotation>
