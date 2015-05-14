@@ -39,6 +39,7 @@
           <annotation>
             <appinfo>
               {
+                browser_spellcheck: true,
                 entity_encoding: "raw",
                 plugins: [
                   "autolink lists link charmap",
