@@ -258,15 +258,15 @@
              <xf:hint><xf:output value="itext('hint-skontakt')"/></xf:hint>
            </xf:input>
            
-           <xf:input ref="instance('hans-instance')/hans:A/hans:sgrp/hans:slink" incremental="true">
+           <!-- <xf:input ref="instance('hans-instance')/hans:A/hans:sgrp/hans:slink" incremental="true">
              <xf:label><xf:output value="itext('label-slink')"/></xf:label>
              <xf:hint><xf:output value="itext('hint-slink')"/></xf:hint>
-           </xf:input>
+           </xf:input> -->
          </xf:group>
        </fieldset>
        <fieldset>
           <legend><xf:output value="itext('legend-tekstiandmed')"/></legend>
-          <xf:output value="itext('help-charinsert')"/>Å å Aͤ aͤ Æ æ Ø ø Oͤ oͤ Œ œ M̄ m̄ N̄ n̄ ß
+          <!-- <xf:output value="itext('help-charinsert')"/>Å å Aͤ aͤ Æ æ Ø ø Oͤ oͤ Œ œ M̄ m̄ N̄ n̄ ß -->
            
           <xf:textarea ref="instance('hans-instance')/hans:A/hans:tgrp/hans:arakiri"
                        incremental="true" mediatype="application/xhtml+xml">
