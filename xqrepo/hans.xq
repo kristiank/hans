@@ -170,7 +170,21 @@ updating function eelex:save-new-entry(
   let $with-date := eelex:add-creation-datetime($input-doc)
   (: add an id number :)
   let $with-id := eelex:specify-id($with-date, $new-id)
-  let $final-entry := $with-id
+  let $final-entry := copy $entry := $with-id
+    modify (
+      (: delete strange stuff from TinyMCE :)
+      replace value of node $entry//vka:arakiri
+      with replace($entry//vka:arakiri/data(),
+                   '<br data-mce-bogus="1">',
+                   '')
+      ,replace value of node $entry//vka:arakiri
+      with replace($entry//vka:arakiri/data(),
+                   '<br>', '<br/>')
+      (: parse the serialized xml from TinyMCE equipped fields :)
+      (: replace value of node $entry//vka:arakiri
+        with parse-xml($entry//vka:arakiri) :)
+    )
+    return $entry
   (:@todo check schema conformity:)
   return
     (db:output('Salvestatud!'),

@@ -39,9 +39,11 @@
           <annotation>
             <appinfo>
               {
-                element_format : "xhtml",
+                schema: "html5",
+                element_format: "xhtml",
                 browser_spellcheck: true,
-                entity_encoding: "raw",
+                entity_encoding: "numeric",
+                cleanup: true,
                 plugins: [
                   "autolink lists link charmap",
                   "searchreplace code fullscreen",
