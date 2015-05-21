@@ -33,29 +33,6 @@
     
     <!-- Hansu EELexi artikli mudel -->
     <xf:model id="hans-leid">
-      <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.agencexml.com/xsltforms/rte">
-        <simpleType name="standardHTML">
-          <restriction base="xf:HTMLFragment" xsltforms:rte="TinyMCE"/>
-          <annotation>
-            <appinfo>
-              {
-                schema: "html5",
-                element_format: "xhtml",
-                browser_spellcheck: true,
-                entity_encoding: "numeric",
-                cleanup: true,
-                plugins: [
-                  "autolink lists link charmap",
-                  "searchreplace code fullscreen",
-                  "insertdatetime paste"
-                ],
-                toolbar: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | charmap",
-                statusbar : false
-              }
-            </appinfo>
-          </annotation>
-        </simpleType>
-      </schema>
       <xf:submission id="submit" action="update-entry" method="post"/>
         <xf:instance id="hans-instance" xmlns="" xmlns:hans="http://www.eki.ee/dict/vka">
           <data>
@@ -137,17 +114,13 @@
                  type="xs:boolean"/>
         <!-- piisab kas ärakirjast või kirjeldusest, mõlemaid ei pea sisestama -->
         <xf:bind nodeset="instance('hans-instance')/hans:A/hans:tgrp/hans:arakiri"
-                 type="rte:standardHTML"
                  constraint="string-length(normalize-space(instance('hans-instance')/hans:A/hans:tgrp/hans:kirjeldus)) &gt; 0
                              or
                              string-length(normalize-space(.)) &gt; 0"/>
         <xf:bind nodeset="instance('hans-instance')/hans:A/hans:tgrp/hans:kirjeldus"
-                 type="rte:standardHTML"
                  constraint="string-length(normalize-space(instance('hans-instance')/hans:A/hans:tgrp/hans:arakiri)) &gt; 0
                              or
                              string-length(normalize-space(.)) &gt; 0"/>
-        <xf:bind nodeset="instance('hans-instance')/hans:A/hans:tgrp/hans:tkom"
-                 type="rte:standardHTML"/>
         <xf:bind nodeset="instance('hans-instance')/hans:A/hans:agrp/hans:viide/hans:a"
                  type="xs:string" required="true()"/>
         <xf:bind nodeset="instance('hans-instance')/hans:A/hans:agrp/hans:viide/hans:f"
@@ -273,19 +246,19 @@
           <!-- <xf:output value="itext('help-charinsert')"/>Å å Aͤ aͤ Æ æ Ø ø Oͤ oͤ Œ œ M̄ m̄ N̄ n̄ ß -->
            
           <xf:textarea ref="instance('hans-instance')/hans:A/hans:tgrp/hans:arakiri"
-                       incremental="true" mediatype="application/xhtml+xml">
+                       incremental="true">
             <xf:label><xf:output value="itext('label-arakiri')"/></xf:label>
             <xf:hint><xf:output value="itext('hint-arakiri')"/></xf:hint>
           </xf:textarea>
           
           <xf:textarea ref="instance('hans-instance')/hans:A/hans:tgrp/hans:kirjeldus"
-                       incremental="true" mediatype="application/xhtml+xml">
+                       incremental="true">
             <xf:label><xf:output value="itext('label-kirjeldus')"/></xf:label>
             <xf:hint><xf:output value="itext('hint-kirjeldus')"/></xf:hint>
           </xf:textarea>
           
           <xf:textarea ref="instance('hans-instance')/hans:A/hans:tgrp/hans:tkom"
-                       incremental="true" mediatype="application/xhtml+xml">
+                       incremental="true">
             <xf:label><xf:output value="itext('label-tkom')"/></xf:label>
             <xf:hint><xf:output value="itext('hint-tkom')"/></xf:hint>
           </xf:textarea>
