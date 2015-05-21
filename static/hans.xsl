@@ -103,7 +103,7 @@
         <tbody>
           <xsl:for-each select="$entries//vka:A">
             <xsl:variable name="date" select="vka:KA"/>
-            <xsl:variable name="arakiri-tekst" select="substring(vka:tgrp/vka:arakiri, 1, 150)"/>
+            <xsl:variable name="arakiri-tekst" select="replace(substring(vka:tgrp/vka:arakiri, 1, 150),'(&lt;p&gt;|&lt;/p&gt;)+', '')"/>
             <xsl:variable name="viide" select="vka:agrp/vka:viide"/>
             <xsl:variable name="nimi" select="vka:sgrp/vka:snimi"/>
             <xsl:variable name="id" select="string(.//vka:m)"/>

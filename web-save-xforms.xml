@@ -39,12 +39,18 @@
           <annotation>
             <appinfo>
               {
+                schema: "html5",
+                element_format: "xhtml",
+                browser_spellcheck: true,
+                entity_encoding: "numeric",
+                cleanup: true,
                 plugins: [
-                  "advlist autolink lists link image charmap print preview anchor",
-                  "searchreplace visualblocks code fullscreen",
-                  "insertdatetime media table contextmenu paste"
+                  "autolink lists link charmap",
+                  "searchreplace code fullscreen",
+                  "insertdatetime paste"
                 ],
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+                toolbar: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | charmap",
+                statusbar : false
               }
             </appinfo>
           </annotation>
@@ -235,6 +241,9 @@
           </xf:translation>
         </xf:itext>
         
+        <xf:action ev:event="xforms-ready">
+          <xf:setfocus control="autofocus" />
+        </xf:action>
       </xf:model>
       
    </head>
@@ -243,7 +252,7 @@
        <fieldset>
          <legend><xf:output value="itext('legend-kontaktandmed')"/></legend>
          <xf:group>
-           <xf:input ref="instance('hans-instance')/hans:A/hans:sgrp/hans:snimi" incremental="true">
+           <xf:input ref="instance('hans-instance')/hans:A/hans:sgrp/hans:snimi" incremental="true" id="autofocus">
              <xf:label><xf:output value="itext('label-snimi')"/></xf:label>
              <xf:hint><xf:output value="itext('hint-snimi')"/></xf:hint>
            </xf:input>
@@ -253,15 +262,15 @@
              <xf:hint><xf:output value="itext('hint-skontakt')"/></xf:hint>
            </xf:input>
            
-           <xf:input ref="instance('hans-instance')/hans:A/hans:sgrp/hans:slink" incremental="true">
+           <!-- <xf:input ref="instance('hans-instance')/hans:A/hans:sgrp/hans:slink" incremental="true">
              <xf:label><xf:output value="itext('label-slink')"/></xf:label>
              <xf:hint><xf:output value="itext('hint-slink')"/></xf:hint>
-           </xf:input>
+           </xf:input> -->
          </xf:group>
        </fieldset>
        <fieldset>
           <legend><xf:output value="itext('legend-tekstiandmed')"/></legend>
-          <xf:output value="itext('help-charinsert')"/>Å å Aͤ aͤ Æ æ Ø ø Oͤ oͤ Œ œ M̄ m̄ N̄ n̄ ß
+          <!-- <xf:output value="itext('help-charinsert')"/>Å å Aͤ aͤ Æ æ Ø ø Oͤ oͤ Œ œ M̄ m̄ N̄ n̄ ß -->
            
           <xf:textarea ref="instance('hans-instance')/hans:A/hans:tgrp/hans:arakiri"
                        incremental="true" mediatype="application/xhtml+xml">
