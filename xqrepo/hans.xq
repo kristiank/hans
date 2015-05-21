@@ -260,7 +260,7 @@ updating function eelex:web-update-entry(
   return
     (: @todo check if email is the same :)
     if(not($old-entry//vka:skontakt = $new-entry//vka:skontakt))
-    then(db:output('vale epostiaadress'))
+    then(db:output('Vale epostiaadress!'))
     else((db:output('Toimetatud!'),
      eelex:update-entry($id, $new-entry)))
 };
