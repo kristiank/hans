@@ -38,9 +38,9 @@
         <xsl:value-of select="tokenize(vka:sgrp/vka:snimi, '\s+')[1]"/> registreeris leiu Hansus <xsl:value-of select="format-date(vka:KA, '[D].[M].[Y]')"/>.
         Leiule võib viidata püsi&#173;lingiga „<a href="http://hans.eki.ee/id/{vka:m}">http://hans.eki.ee/id/<xsl:value-of select="vka:m"/></a>“. Leidudele viitamise kohta võid lugeda rohkem <a href="citing">siit</a>.</div>
         <xsl:if test="not(empty(vka:tgrp/vka:kirjeldus))">
-          <div class="vka_kirjeldus"><h3>Tekstile on lisatud kirjeldus:</h3><xsl:sequence select="vka:tgrp/vka:kirjeldus/p"/></div>
+          <div class="vka_kirjeldus"><h3>Tekstile on lisatud kirjeldus</h3><xsl:sequence select="vka:tgrp/vka:kirjeldus/p"/></div>
         </xsl:if>
-        <xsl:if test="not(empty(vka:tgrp/vka:tkom))"><div class="vka_tkom"><h3>Teksti ja selle konteksti seletavaid kommentaare:</h3><xsl:sequence select="vka:tgrp/vka:tkom/p"/></div></xsl:if>
+        <xsl:if test="not(empty(vka:tgrp/vka:tkom))"><div class="vka_tkom"><h3>Teksti ja selle tausta on seletatud kommentaariga</h3><xsl:sequence select="vka:tgrp/vka:tkom/p"/></div></xsl:if>
         <xsl:if test="not(empty(.//vka:ffail))"><div class="vka_ffail"><a href="raw/{vka:m}/{.//vka:ffail}">Vaata leiule lisatud pilti.</a></div></xsl:if>
         <a href="edit?id={vka:m}">Toimeta leiu andmeid</a>. <a href="view-detailed?id={vka:m}">Vaata täpsemaid andmeid</a>. <a href="xml?id={vka:m}">Vaata andmete XMLi</a>.
       </div>
