@@ -172,17 +172,19 @@ updating function eelex:save-new-entry(
   let $with-id := eelex:specify-id($with-date, $new-id)
   let $final-entry := copy $entry := $with-id
     modify (
-      (: delete strange stuff from TinyMCE :)
-      replace value of node $entry//vka:arakiri
-      with replace($entry//vka:arakiri/data(),
-                   '<br data-mce-bogus="1">',
-                   '')
-      ,replace value of node $entry//vka:arakiri
-      with replace($entry//vka:arakiri/data(),
-                   '<br>', '<br/>')
-      (: parse the serialized xml from TinyMCE equipped fields :)
-      (: replace value of node $entry//vka:arakiri
-        with parse-xml($entry//vka:arakiri) :)
+      (: text from the fields 'ärakiri', 'kirjeldus' and 'kommentaar' get's
+         converted into html paragraphs.  :)
+      for $text in $entry//vka:tgrp/(vka:arakiri|vka:kirjeldus|vka:tkom)
+        (: let $norm-text1 := replace($text, "&#xA;", '') :)
+        (: let $norm-text2 := replace($norm-text1, "&#xD;", '') :)
+        let $norm-text := replace($text, "&amp;br;", out:nl())
+        let $new-text := 
+          element {node-name($text)} {
+            for $line in tokenize($norm-text, "([\n]?[\r])+")
+              return element {'p'} {$line}
+          }
+        return replace node $text
+          with $new-text
     )
     return $entry
   (:@todo check schema conformity:)
@@ -254,7 +256,22 @@ updating function eelex:web-update-entry(
 )
 {
   let $id := xs:positiveInteger($data//vka:m)
-  let $new-entry := $data//vka:A
+  let $new-entry := copy $entry := $data//vka:A
+    modify(
+      (: text from the fields 'ärakiri', 'kirjeldus' and 'kommentaar' get's
+         converted into html paragraphs.  :)
+      for $text in $entry//vka:tgrp/(vka:arakiri|vka:kirjeldus|vka:tkom)
+        (: let $norm-text1 := replace($text, "&#xA;", '') :)
+        (: let $norm-text2 := replace($norm-text1, "&#xD;", '') :)
+        let $norm-text := replace($text, "&amp;br;", out:nl())
+        let $new-text := 
+          element {node-name($text)} {
+            for $line in tokenize($norm-text, "(&#10;?&#13;)+")
+              return element {'p'} {$line}
+          }
+        return replace node $text
+          with $new-text
+    ) return $entry
   let $old-entry := eelex:get-by-id($id)/vka:A
   
   return
