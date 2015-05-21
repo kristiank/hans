@@ -173,7 +173,7 @@
             <xf:text id="label-snimi"><xf:value>Sinu nimi: </xf:value></xf:text>
             <xf:text id="hint-snimi"><xf:value>Vormi täitja nimi kujul Eesnimi Perenimi.</xf:value></xf:text>
             <xf:text id="label-skontakt"><xf:value>Sinu epost: </xf:value></xf:text>
-            <xf:text id="hint-skontakt"><xf:value>Vormi täitja eposti aadress (ei avalikustata).</xf:value></xf:text>
+            <xf:text id="hint-skontakt"><xf:value>Vormi esialgse täitja eposti aadress (ei avalikustata).</xf:value></xf:text>
             <xf:text id="label-slink"><xf:value>Saada link</xf:value></xf:text>
             <xf:text id="hint-slink"><xf:value>Soovin e-kirjaga linki kirje täiendamiseks.</xf:value></xf:text>
             
