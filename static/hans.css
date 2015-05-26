@@ -177,7 +177,7 @@ a {
 
 a:link    {color: #003b80; text-decoration:underline}
 a:visited {text-decoration:underline}
-a:hover   {color: #74b8e1; text-decoration:underline}
+/*a:hover   {color: #74b8e1; text-decoration:underline}*/
 a:active  {color: #74b8e1; text-decoration:underline}
 
 ul {
