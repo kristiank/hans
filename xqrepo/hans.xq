@@ -383,6 +383,7 @@ function eelex:web-search(
 {
   let $content := <content>
                     <h2>Otsing</h2>
+                    <p>Lihtotsingutega saab otsida andmebaasi kirjete sisu ja teiste väljade järgi. Otsingud toetavad tõhusamaid päringuid regulaaravaldistega, nt „<a href="search?q=sa[ksx]%2Ba">sa[ksx]+a</a>“ leiab nii <em>saksa</em>, <em>saxa</em> ja <em>sakksa</em> (kui ka <em>saxskskxa</em>).</p>
                     <form action="search">
                     <input type="text" name="q" id="search-box"
                      title="Otsing" label="Otsing" autocomplete="off"
