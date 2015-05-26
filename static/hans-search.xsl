@@ -24,13 +24,15 @@
     
     <!-- Lisa otsingu ja leitud vastete kirjeldus -->
     <xsl:result-document href="#results" method="ixsl:replace-content">
+    <h2>
       Leiti 
       <xsl:choose>
         <xsl:when test="$is-plural"><xsl:value-of select="$entries-count"/> vastet</xsl:when>
         <xsl:otherwise>üks vaste</xsl:otherwise>
       </xsl:choose> 
       päringule «<xsl:value-of select="$q"/>» 
-     <xsl:value-of select="format-date(current-date(), '(seisuga [D].[M].[Y])')"/>
+      <xsl:value-of select="format-date(current-date(), '(seisuga [D].[M].[Y])')"/>
+     </h2>
     </xsl:result-document>   
     
     <!-- Lisa otsingu vastete tabel -->
