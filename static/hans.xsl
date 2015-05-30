@@ -17,40 +17,40 @@
   <!-- Arhiivide nimetused ja nende käändevorme -->
   <xsl:variable name="arhiivid">
     <arhiiv nimi="EAA">
-      <nimetav>Eesti Ajalooarhiiv</nimetav>
-      <omastav>Eesti Ajalooarhiivi</omastav>
-      <seesütlev>Eesti Ajalooarhiivis</seesütlev>
-      <väljaütlev>Eesti Ajalooarhiivist</väljaütlev>
+      <nimetav>Eesti Ajaloo&#173;arhiiv</nimetav>
+      <omastav>Eesti Ajaloo&#173;arhiivi</omastav>
+      <seesütlev>Eesti Ajaloo&#173;arhiivis</seesütlev>
+      <väljaütlev>Eesti Ajaloo&#173;arhiivist</väljaütlev>
     </arhiiv>
     <arhiiv nimi="AM">
-      <nimetav>Eesti Ajaloomuuseum</nimetav>
-      <omastav>Eesti Ajaloomuuseumi</omastav>
-      <seesütlev>Eesti Ajaloomuuseumis</seesütlev>
-      <väljaütlev>Eesti Ajaloomuuseumist</väljaütlev>
+      <nimetav>Eesti Ajaloo&#173;muuseum</nimetav>
+      <omastav>Eesti Ajaloo&#173;muuseumi</omastav>
+      <seesütlev>Eesti Ajaloo&#173;muuseumis</seesütlev>
+      <väljaütlev>Eesti Ajaloo&#173;muuseumist</väljaütlev>
     </arhiiv>
     <arhiiv nimi="EKLA">
-      <nimetav>Eesti Kultuurilooline Arhiiv</nimetav>
-      <omastav>Eesti Kultuuriloolise Arhiivi</omastav>
-      <seesütlev>Eesti Kultuuriloolises Arhiivis</seesütlev>
-      <väljaütlev>Eesti Kultuuriloolisest Arhiivist</väljaütlev>
+      <nimetav>Eesti Kultuuri&#173;looline Arhiiv</nimetav>
+      <omastav>Eesti Kultuuri&#173;loolise Arhiivi</omastav>
+      <seesütlev>Eesti Kultuuri&#173;loolises Arhiivis</seesütlev>
+      <väljaütlev>Eesti Kultuuri&#173;loolisest Arhiivist</väljaütlev>
     </arhiiv>
     <arhiiv nimi="LVVA">
-      <nimetav>Läti Riiklik Ajalooarhiiv</nimetav>
-      <omastav>Läti Riikliku Ajalooarhiivi</omastav>
-      <seesütlev>Läti Riiklikus Ajalooarhiivis</seesütlev>
-      <väljaütlev>Läti Riiklikust Ajalooarhiivist</väljaütlev>
+      <nimetav>Läti Riiklik Ajaloo&#173;arhiiv</nimetav>
+      <omastav>Läti Riikliku Ajaloo&#173;arhiivi</omastav>
+      <seesütlev>Läti Riiklikus Ajaloo&#173;arhiivis</seesütlev>
+      <väljaütlev>Läti Riiklikust Ajaloo&#173;arhiivist</väljaütlev>
     </arhiiv>
     <arhiiv nimi="SRA">
-      <nimetav>Rootsi Riigiarhiiv</nimetav>
-      <omastav>Rootsi Riigiarhiivi</omastav>
-      <seesütlev>Rootsi Riigiarhiivis</seesütlev>
-      <väljaütlev>Rootsi Riigiarhiivist</väljaütlev>
+      <nimetav>Rootsi Riigi&#173;arhiiv</nimetav>
+      <omastav>Rootsi Riigi&#173;arhiivi</omastav>
+      <seesütlev>Rootsi Riigi&#173;arhiivis</seesütlev>
+      <väljaütlev>Rootsi Riigi&#173;arhiivist</väljaütlev>
     </arhiiv>
     <arhiiv nimi="TLA">
-      <nimetav>Tallinna Linnaarhiiv</nimetav>
-      <omastav>Tallinna Linnaarhiivi</omastav>
-      <seesütlev>Tallinna Linnaarhiivis</seesütlev>
-      <väljaütlev>Tallinna Linnaarhiivist</väljaütlev>
+      <nimetav>Tallinna Linna&#173;arhiiv</nimetav>
+      <omastav>Tallinna Linna&#173;arhiivi</omastav>
+      <seesütlev>Tallinna Linna&#173;arhiivis</seesütlev>
+      <väljaütlev>Tallinna Linna&#173;arhiivist</väljaütlev>
     </arhiiv>
     <arhiiv nimi="muu">
       <nimetav>mingi märkimata koht</nimetav>
