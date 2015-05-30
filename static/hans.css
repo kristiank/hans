@@ -1,3 +1,7 @@
+body {
+	margin-left: 2%;
+}
+
 .vka_A {
 	padding: 10px;
 	font-family: sans-serif;
@@ -11,6 +15,20 @@
 	padding: 10px;
 }
 
+.pisipildid {
+	border: 1px solid;
+	position: absolute;
+	right: 1em;
+	top: 1em;
+}
+
+.metainfonarratiiv {
+	padding: 10px;
+	font-size: 18px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	line-height: 1.7;
+}
+
 .vka_arakiri {
 	background-color: lightgoldenrodyellow;
 	font-family: 'New Century Schoolbook', Georgia, serif;
@@ -19,6 +37,17 @@
 	font-style: italic;
 	text-align: left;
 	font-size: 20px;
+}
+
+.vanatekst {
+	background-color: lightgoldenrodyellow;
+	font-family: 'New Century Schoolbook', Georgia, serif;
+	padding: 10px;
+	font-weight: 200;
+	font-style: italic;
+	text-align: left;
+	font-size: 18px;
+	line-height: 1.7;
 }
 
 .vka_arakiri p {
@@ -35,7 +64,7 @@
 }
 
 th {
-	font-family: "Raleway",sans-serif;
+	font-family: "Times New Roman", Times, serif;
 	font-weight: 300;
 	background-color: lightblue;
 }
@@ -54,7 +83,7 @@ div.date {
 	width: inherit;
 }
 .date {
-	font: small-caps 12px monospace;
+	font-family: sans-serif;
 }
 
 
@@ -66,7 +95,9 @@ div.arakiri-tekst {
 	width: inherit;
 	overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: wrap;
+	height: 3em;
+	font-size: 18px;
 }
 .arakiri-tekst {
 		font: italic 12px Georgia, serif;
@@ -110,10 +141,12 @@ div.viide {
 
 h1 {
 	clear: left;
-	font-family: "Raleway",sans-serif;
+	font-family: "Times New Roman", Times, serif;
+	/* font-size: 32; */
 	font-weight: 300;
 }
 
+/*
 .icon-left {
 	background-image: url(media/hans-icon.svg);
 	background-repeat: no-repeat;
@@ -121,16 +154,17 @@ h1 {
 	padding-left: 1em;
 	display: block;
 }
+*/
 
 h2 {
 	clear: left;
-	font-family: "Raleway",sans-serif;
+	font-family: "Times New Roman", Times, serif;
 	font-weight: 300;
 }
 
 h3 {
 	clear: left;
-	font-family: "Raleway",sans-serif;
+	font-family: "Times New Roman", Times, serif;
 	font-weight: 300;
 }
 
@@ -170,18 +204,14 @@ label {
 	border: 1px dashed red;
 }
 
-a {
-	font-family: "Raleway",sans-serif;
-	font-weight: 300;
-}
-
 a:link    {color: #003b80; text-decoration:underline}
 a:visited {text-decoration:underline}
 /*a:hover   {color: #74b8e1; text-decoration:underline}*/
 a:active  {color: #74b8e1; text-decoration:underline}
 
 ul {
-	list-style-type: square;
+	list-style-type: none;
+	padding-left: 1em;
 }
 
 /* used to give focus to table headings */
@@ -196,21 +226,8 @@ th:hover { background: #e4eef0; cursor: pointer }
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
-@font-face {
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 100;
-  src: local('Raleway Thin'), local('Raleway-Thin'), url(http://fonts.gstatic.com/s/raleway/v9/RJMlAoFXXQEzZoMSUteGWFtXRa8TVwTICgirnJhmVJw.woff2) format('woff2'), url(http://fonts.gstatic.com/s/raleway/v9/RJMlAoFXXQEzZoMSUteGWD8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
-}
-@font-face {
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Raleway Light'), local('Raleway-Light'), url(http://fonts.gstatic.com/s/raleway/v9/-_Ctzj9b56b8RgXW8FArifk_vArhqVIZ0nv9q090hN8.woff2) format('woff2'), url(http://fonts.gstatic.com/s/raleway/v9/-_Ctzj9b56b8RgXW8FAriRsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
-}
-@font-face {
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 600;
-  src: local('Raleway SemiBold'), local('Raleway-SemiBold'), url(http://fonts.gstatic.com/s/raleway/v9/xkvoNo9fC8O2RDydKj12b_k_vArhqVIZ0nv9q090hN8.woff2) format('woff2'), url(http://fonts.gstatic.com/s/raleway/v9/xkvoNo9fC8O2RDydKj12bxsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+#content p {
+	font-family: Impact, Charcoal, sans-serif;
+	font-weight: 100;
+	font-size: 17px;
 }
