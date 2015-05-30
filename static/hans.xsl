@@ -53,10 +53,10 @@
       <väljaütlev>Tallinna Linnaarhiivist</väljaütlev>
     </arhiiv>
     <arhiiv nimi="muu">
-      <nimetav>kuskil</nimetav>
-      <omastav>mingi</omastav>
-      <seesütlev>kuskil</seesütlev>
-      <väljaütlev>kuskilt</väljaütlev>
+      <nimetav>mingi märkimata koht</nimetav>
+      <omastav>mingi märkimata koha</omastav>
+      <seesütlev>kuskil märkimata kohas</seesütlev>
+      <väljaütlev>kuskilt märkimata kohast</väljaütlev>
     </arhiiv>
   </xsl:variable>
   
