@@ -100,7 +100,7 @@
       <ul>
         <xsl:for-each select="$entries//vka:A">
           <xsl:variable name="date" select="vka:KA"/>
-          <xsl:variable name="arakiri-tekst" select="substring(vka:tgrp/vka:arakiri/p, 1, 250)"/>
+          <xsl:variable name="arakiri-tekst" select="substring(vka:tgrp/vka:arakiri, 1, 250)"/>
           <xsl:variable name="arhiiv" select="vka:agrp/vka:viide/vka:a"/>
           <xsl:variable name="nimi" select="vka:sgrp/vka:snimi"/>
           <xsl:variable name="eesnimi" select="tokenize(vka:sgrp/vka:snimi, '\s+')[1]"/>
