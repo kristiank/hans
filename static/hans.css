@@ -2,6 +2,40 @@ body {
 	margin-left: 2%;
 }
 
+.lisatud-kirje {
+	margin-bottom: 2em;
+	width: 100%;
+	height: 150px;
+}
+
+.sajand {
+	font-size: 3em;
+	float: left;
+}
+
+.vasakul {
+	position: absolute;
+	display: inline-block;
+	font-size: 20;
+	width: 200px;
+	height: 100px;
+}
+.keskel {
+	position: absolute;
+	left: 220px;
+	display: inline-block;
+	height: 3em;
+	width: 500px;
+	overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap;
+}
+.paremal {
+	position: absolute;
+	left: 700px;
+	width: 200px;
+}
+
 .vka_A {
 	padding: 10px;
 	font-family: sans-serif;
@@ -90,17 +124,6 @@ div.date {
 td.arakiri-tekst {
 	width: 100%;
 	max-width: 10px;
-}
-div.arakiri-tekst {
-	width: inherit;
-	overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: wrap;
-	height: 3em;
-	font-size: 18px;
-}
-.arakiri-tekst {
-		font: italic 12px Georgia, serif;
 }
 .arakiri-tekst a:link, .arakiri-tekst a:visited {
 	text-decoration: none;

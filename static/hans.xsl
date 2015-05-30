@@ -97,24 +97,31 @@
     </xsl:result-document>   
   
     <xsl:result-document href="#results" method="replace-content">
-      <table>
-        <thead><tr><th data-type="date">Kuupäev</th><th>Tekst või kirjeldus</th><th>Allikas</th><th>Teataja</th></tr></thead>
-        <tbody>
-          <xsl:for-each select="$entries//vka:A">
-            <xsl:variable name="date" select="vka:KA"/>
-            <xsl:variable name="arakiri-tekst" select="replace(substring(vka:tgrp/vka:arakiri, 1, 150),'(&lt;p&gt;|&lt;/p&gt;)+', '')"/>
-            <xsl:variable name="viide" select="vka:agrp/vka:viide"/>
-            <xsl:variable name="nimi" select="vka:sgrp/vka:snimi"/>
-            <xsl:variable name="id" select="string(.//vka:m)"/>
-            <tr data-id="{$id}">
-              <td class="date" data-sort-value="{$date}"><div class="date" align="center"><xsl:value-of select="format-date($date, '[D].[M].[Y]')"/></div></td>
-              <td class="arakiri-tekst" data-sort-value="{$arakiri-tekst}"><div class="arakiri-tekst"><a href="view?id={$id}"><xsl:value-of select="$arakiri-tekst"/></a></div></td>
-              <td class="viide" data-sort-value="{$viide}"><div class="viide"><xsl:value-of select="$viide"/></div></td>
-              <td class="nimi" data-sort-value="{$nimi}"><div class="nimi"><xsl:value-of select="$nimi"/></div></td>
-            </tr>
-          </xsl:for-each>
-        </tbody>
-      </table>
+      <ul>
+        <xsl:for-each select="$entries//vka:A">
+          <xsl:variable name="date" select="vka:KA"/>
+          <xsl:variable name="arakiri-tekst" select="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'"/> <!--  select="substring(vka:tgrp/vka:arakiri, 1, 250)"/>  -->
+          <xsl:variable name="arhiiv" select="vka:agrp/vka:viide/vka:a"/>
+          <xsl:variable name="nimi" select="vka:sgrp/vka:snimi"/>
+          <xsl:variable name="eesnimi" select="tokenize(vka:sgrp/vka:snimi, '\s+')[1]"/>
+          <xsl:variable name="id" select="string(.//vka:m)"/>
+          <xsl:variable name="sajand" select="vka:agrp/vka:dgrp/vka:saj"/>
+          <li>
+            <div class="lisatud-kirje">
+              <span class="vasakul">
+                <span class="sajand"><xsl:value-of select="$sajand"/>.</span> sajandi tekst
+              </span>
+              <span class="keskel">
+                <span class="arakiri-tekst"><a href="view?id={$id}"><xsl:value-of select="$arakiri-tekst"/></a></span>
+              </span>
+              <span class="paremal">
+                teksti leidis <xsl:value-of select="$eesnimi"/><xsl:text> </xsl:text><xsl:value-of select="$arhiivid/arhiiv[@nimi = $arhiiv]/väljaütlev"/><xsl:text> </xsl:text><xsl:value-of select="format-date($date, '[D].[M].[Y]')"/>
+              </span>
+            </div>
+          </li>
+          <!-- <xsl:if test="position() != last()"><hr/></xsl:if> -->
+        </xsl:for-each>
+      </ul>
     </xsl:result-document>
   </xsl:template>
 
