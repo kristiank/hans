@@ -31,19 +31,20 @@
   <xsl:template match="vka:A" mode="narrative">
     <xsl:variable name="arhiiv" select="vka:agrp/vka:viide/vka:a"/>
     <xsl:result-document href="#content" method="ixsl:append-content">
-      <h2>Keeleleid nr #<xsl:value-of select="vka:m"/></h2>
-      <div class="vka_A">
-        <xsl:if test="not(empty(vka:tgrp/vka:arakiri))"><div class="vka_arakiri"><xsl:sequence select="vka:tgrp/vka:arakiri/p"/></div></xsl:if>
-        <div class="leiu_info_narratiiv">Selle <xsl:value-of select="vka:agrp/vka:dgrp/vka:saj"/>.&#160;sajandil kirja pandud teksti leidis <xsl:value-of select="vka:sgrp/vka:snimi"/> tuhnides üht muidu <xsl:if test="vka:agrp/vka:akeel = 'eesti'">ka </xsl:if><xsl:value-of select="vka:agrp/vka:akeel"/>&#173;keelset ürikut <xsl:value-of select="$arhiivid/arhiiv[@nimi = $arhiiv]/seesütlev"/>. Täpsemini öeldud leidis ta selle ürikust „<span class="vka_viide"><xsl:value-of select="hans:vormista-viide(vka:agrp/vka:viide)"/></span>“.
+      <h2>Keeleleid nr <xsl:value-of select="vka:m"/></h2>
+        <xsl:if test="not(empty(vka:tgrp/vka:arakiri))"><div class="vanatekst"><xsl:sequence select="vka:tgrp/vka:arakiri/p"/></div></xsl:if>
+        <div class="metainfonarratiiv">Selle <xsl:value-of select="vka:agrp/vka:dgrp/vka:saj"/>.&#160;sajandil kirja pandud teksti leidis <xsl:value-of select="vka:sgrp/vka:snimi"/> tuhnides <xsl:if test="vka:agrp/vka:akeel != 'eesti'"> üht muidu <xsl:value-of select="vka:agrp/vka:akeel"/>&#173;keelset ürikut</xsl:if> <xsl:value-of select="$arhiivid/arhiiv[@nimi = $arhiiv]/seesütlev"/>. Täpsemini on ta sellele viidanud kui „<span class="vka_viide"><xsl:value-of select="hans:vormista-viide(vka:agrp/vka:viide)"/></span>“.
         <xsl:value-of select="tokenize(vka:sgrp/vka:snimi, '\s+')[1]"/> registreeris leiu Hansus <xsl:value-of select="format-date(vka:KA, '[D].[M].[Y]')"/>.
-        Leiule võib viidata püsi&#173;lingiga „<a href="http://hans.eki.ee/id/{vka:m}">http://hans.eki.ee/id/<xsl:value-of select="vka:m"/></a>“. Leidudele viitamise kohta võid lugeda rohkem <a href="citing">siit</a>.</div>
+        Leiule võib viidata kirje id-numbriga (<xsl:value-of select="vka:m"/>) või püsi&#173;lingiga <a href="http://hans.eki.ee/id/{vka:m}">http://hans.eki.ee/id/<xsl:value-of select="vka:m"/></a>. Leidudele viitamise kohta võid lugeda rohkem <a href="citing">siit</a>.</div>
         <xsl:if test="not(empty(vka:tgrp/vka:kirjeldus))">
-          <div class="vka_kirjeldus"><h3>Tekstile on lisatud kirjeldus</h3><xsl:sequence select="vka:tgrp/vka:kirjeldus/p"/></div>
+          <div class="lisainfo"><h2>Tekstile on lisatud kirjeldus</h2><xsl:sequence select="vka:tgrp/vka:kirjeldus/p"/></div>
         </xsl:if>
-        <xsl:if test="not(empty(vka:tgrp/vka:tkom))"><div class="vka_tkom"><h3>Teksti ja selle tausta on seletatud kommentaariga</h3><xsl:sequence select="vka:tgrp/vka:tkom/p"/></div></xsl:if>
-        <xsl:if test="not(empty(.//vka:ffail))"><div class="vka_ffail"><a href="raw/{vka:m}/{.//vka:ffail}">Vaata leiule lisatud pilti.</a></div></xsl:if>
-        <a href="edit?id={vka:m}">Toimeta leiu andmeid</a>. <a href="view-detailed?id={vka:m}">Vaata täpsemaid andmeid</a>. <a href="xml?id={vka:m}">Vaata andmete XMLi</a>.
-      </div>
+        <xsl:if test="not(empty(vka:tgrp/vka:tkom))"><div class="lisainfo"><h2>Teksti ja selle tausta on seletatud kommentaariga</h2><xsl:sequence select="vka:tgrp/vka:tkom/p"/></div></xsl:if>
+        <xsl:if test="not(empty(.//vka:ffail))"><div class="pisipildid"><a href="raw/{vka:m}/{.//vka:ffail}">Vaata leiule lisatud pilti.</a></div></xsl:if>
+        <div class="toiminguriba">
+          <a href="edit?id={vka:m}">Toimeta leiu andmeid</a>. <a href="view-detailed?id={vka:m}">Vaata täpsemaid andmeid</a>. <a href="xml?id={vka:m}">Vaata andmete XMLi</a>.
+        </div>
+        <div class="orienteerumisriba"><a href="#">Vaata sama ajastu tekste</a>. <a href="#">Vaata samast arhiivist leitud tekste</a>.</div>
     </xsl:result-document>
   </xsl:template>
   
