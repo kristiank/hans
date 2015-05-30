@@ -239,8 +239,10 @@
             <xf:text id="label-file-kustuta"><xf:value>Eemalda see pilt</xf:value></xf:text>
             <xf:text id="label-submit"><xf:value>Salvesta</xf:value></xf:text>
             
+            <!-- 
             <xf:text id="label-"><xf:value></xf:value></xf:text>
             <xf:text id="hint-"><xf:value></xf:value></xf:text>
+            -->
           </xf:translation>
         </xf:itext>
         
@@ -323,6 +325,10 @@
             <xf:item>
               <xf:label>TLA — Tallinna Linnaarhiiv</xf:label>
               <xf:value>TLA</xf:value>
+            </xf:item>
+            <xf:item>
+              <xf:label>Mõni teine asukoht</xf:label>
+              <xf:value>muu</xf:value>
             </xf:item>
           </xf:select1>
           
