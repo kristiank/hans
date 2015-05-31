@@ -91,8 +91,8 @@
     
     <!-- Lisa kuupäev viimati lisatud pealkirja juurde -->
     <xsl:result-document href="#results" method="ixsl:replace-content">
-      <h2>Viimati lisatud 
-       <xsl:value-of select="format-date(current-date(), '(seisuga [D].[M].[Y])')"/>
+      <h2>Viimati leitud tekstid
+       <!-- <xsl:value-of select="format-date(current-date(), '(seisuga [D].[M].[Y])')"/> -->
       </h2>
     </xsl:result-document>   
   
