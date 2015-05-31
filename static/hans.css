@@ -58,10 +58,12 @@ body {
 }
 
 .pisipildid {
-	border: 1px solid;
-	position: absolute;
 	right: 1em;
 	top: 1em;
+}
+
+img.pisipilt {
+	height: 150px;
 }
 
 .metainfonarratiiv {

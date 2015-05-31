@@ -40,8 +40,9 @@
           <div class="lisainfo"><h2>Tekstile on lisatud kirjeldus</h2><xsl:sequence select="vka:tgrp/vka:kirjeldus/p"/></div>
         </xsl:if>
         <xsl:if test="not(empty(vka:tgrp/vka:tkom))"><div class="lisainfo"><h2>Teksti ja selle tausta on seletatud kommentaariga</h2><xsl:sequence select="vka:tgrp/vka:tkom/p"/></div></xsl:if>
-        <xsl:if test="not(empty(.//vka:ffail))"><div class="pisipildid"><a href="raw/{vka:m}/{.//vka:ffail}">Vaata leiule lisatud pilti.</a></div></xsl:if>
+        <xsl:if test="not(empty(.//vka:ffail))"><div class="pisipildid"><h2>Leiule on lisatud pildid</h2><a href="raw/{vka:m}/{.//vka:ffail}"><img class="pisipilt" alt="Leidu kirjeldav pilt" src="raw/{vka:m}/{.//vka:ffail}"/></a></div></xsl:if>
         <div class="toiminguriba">
+        <h2>Tegevused</h2>
           <a href="edit?id={vka:m}">Toimeta leiu andmeid</a>. <a href="view-detailed?id={vka:m}">Vaata täpsemaid andmeid</a>. <a href="xml?id={vka:m}">Vaata andmete XMLi</a>.
         </div>
         <div class="orienteerumisriba"><a href="#">Vaata sama ajastu tekste</a>. <a href="#">Vaata samast arhiivist leitud tekste</a>.</div>

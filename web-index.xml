@@ -8,13 +8,19 @@
 <h2>Kasuta</h2>
 
 <ul>
-  <li><p><form action="search">
+  <li>
+    <p><form action="search">
     <input type="text" name="q" id="search-box"
      title="Otsi kohe" label="Otsi kohe" autocomplete="off"
      autofocus="no" />
      <input type="submit" name="submit" value="otsi kohe"/>
-  </form></p></li>
-	<li><p><a href="new">Sisesta leitud tekst</a></p></li>
-	<li><p><a href="search">Vaata ja otsi sisestatud leidusid</a></p></li>
+    </form></p>
+  </li>
+  <li>
+    <p><a href="new">Sisesta leitud tekst</a></p>
+  </li>
+  <li>
+    <p><a href="search">Vaata ja otsi sisestatud leidusid</a></p>
+  </li>
 </ul>
 </content>

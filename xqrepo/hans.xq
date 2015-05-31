@@ -908,6 +908,7 @@ function eelex:web-get-raw-file(
   $fp as xs:string
 )
 {
+  (: @todo check if file exists :)
   stream:materialize(
     db:retrieve($eelex:hans-db,
                 concat('data/', $id, '/', $fp)))
