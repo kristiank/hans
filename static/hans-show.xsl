@@ -30,8 +30,9 @@
   <!-- Artikli narratiivne vaade -->
   <xsl:template match="vka:A" mode="narrative">
     <xsl:variable name="arhiiv" select="vka:agrp/vka:viide/vka:a"/>
+    <xsl:variable name="id" select="vka:m"/>
     <xsl:result-document href="#content" method="ixsl:append-content">
-      <h2>Keeleleid nr <xsl:value-of select="vka:m"/></h2>
+      <h2>Keeleleid nr <xsl:value-of select="$id"/></h2>
         <xsl:if test="not(empty(vka:tgrp/vka:arakiri))"><div class="vanatekst"><xsl:sequence select="vka:tgrp/vka:arakiri/p"/></div></xsl:if>
         <div class="metainfonarratiiv">Selle <xsl:value-of select="vka:agrp/vka:dgrp/vka:saj"/>.&#160;sajandil kirja pandud teksti leidis <xsl:value-of select="vka:sgrp/vka:snimi"/> tuhnides <xsl:if test="vka:agrp/vka:akeel != 'eesti'"> üht muidu <xsl:value-of select="vka:agrp/vka:akeel"/>&#173;keelset ürikut</xsl:if> <xsl:value-of select="$arhiivid/arhiiv[@nimi = $arhiiv]/seesütlev"/>. Täpsemini on ta sellele viidanud kui „<span class="vka_viide"><xsl:value-of select="hans:vormista-viide(vka:agrp/vka:viide)"/></span>“.
         <xsl:value-of select="tokenize(vka:sgrp/vka:snimi, '\s+')[1]"/> registreeris leiu Hansus <xsl:value-of select="format-date(vka:KA, '[D].[M].[Y]')"/>.
@@ -40,7 +41,13 @@
           <div class="lisainfo"><h2>Tekstile on lisatud kirjeldus</h2><xsl:sequence select="vka:tgrp/vka:kirjeldus/p"/></div>
         </xsl:if>
         <xsl:if test="not(empty(vka:tgrp/vka:tkom))"><div class="lisainfo"><h2>Teksti ja selle tausta on seletatud kommentaariga</h2><xsl:sequence select="vka:tgrp/vka:tkom/p"/></div></xsl:if>
-        <xsl:if test="not(empty(.//vka:ffail))"><div class="pisipildid"><h2>Leiule on lisatud pildid</h2><a href="raw/{vka:m}/{.//vka:ffail}"><img class="pisipilt" alt="Leidu kirjeldav pilt" src="raw/{vka:m}/{.//vka:ffail}"/></a></div></xsl:if>
+        <xsl:if test="not(empty(.//vka:ffail))">
+          <div class="pisipildid"><h2>Leiule on lisatud pildid</h2>
+            <xsl:for-each select=".//vka:ffail">
+              <a href="raw/{$id}/{.}"><img class="pisipilt" alt="Leidu kirjeldav pilt" src="raw/{$id}/{.}"/></a>
+            </xsl:for-each>
+          </div>
+          </xsl:if>
         <div class="toiminguriba">
         <h2>Tegevused</h2>
           <a href="edit?id={vka:m}">Toimeta leiu andmeid</a>. <a href="view-detailed?id={vka:m}">Vaata täpsemaid andmeid</a>. <a href="xml?id={vka:m}">Vaata andmete XMLi</a>.
