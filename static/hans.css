@@ -178,12 +178,12 @@ a:visited {text-decoration:underline}
 /*a:hover   {color: #74b8e1; text-decoration:underline}*/
 a:active  {color: #74b8e1; text-decoration:underline}
 
-.nolink a:link,
-.nolink a:visited {
+.nolink:link,
+.nolink:visited {
 	text-decoration: none;
 	color: black;
 }
-.nolink a:hover {
+.nolink:hover {
 	text-decoration: underline;
 }
 

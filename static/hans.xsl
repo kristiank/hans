@@ -109,10 +109,10 @@
           <li>
             <div class="lisatud-kirje">
               <span class="vasakul">
-                <span class="sajand"><xsl:value-of select="$sajand"/>.</span> sajandi teksti
+                <span class="sajand"><xsl:value-of select="$sajand"/>.</span> sajandi tekst
               </span>
               <span class="keskel">
-                <span class="arakiri-tekst"><a href="view?id={$id}"><xsl:value-of select="$arakiri-tekst"/></a></span>
+                <span class="arakiri-tekst"><a class="nolink" href="view?id={$id}"><xsl:value-of select="$arakiri-tekst"/></a></span>
               </span>
               <span class="paremal">
                 leidis <xsl:value-of select="$eesnimi"/><xsl:text> </xsl:text><xsl:value-of select="$arhiivid/arhiiv[@nimi = $arhiiv]/väljaütlev"/><xsl:text> </xsl:text><xsl:value-of select="format-date($date, '[D].[M].[Y]')"/>
