@@ -34,9 +34,9 @@
     <xsl:result-document href="#content" method="ixsl:append-content">
       <h2>Keeleleid nr <xsl:value-of select="$id"/></h2>
         <xsl:if test="not(empty(vka:tgrp/vka:arakiri))"><div class="vanatekst"><xsl:sequence select="vka:tgrp/vka:arakiri/p"/></div></xsl:if>
-        <div class="metainfonarratiiv">Selle <xsl:value-of select="vka:agrp/vka:dgrp/vka:saj"/>.&#160;sajandil kirja pandud teksti leidis <xsl:value-of select="vka:sgrp/vka:snimi"/> tuhnides <xsl:if test="vka:agrp/vka:akeel != 'eesti'"> üht muidu <xsl:value-of select="vka:agrp/vka:akeel"/>&#173;keelset ürikut </xsl:if> <xsl:value-of select="$arhiivid/arhiiv[@nimi = $arhiiv]/seesütlev"/>. Täpsemini on ta sellele viidanud kui „<span class="vka_viide"><xsl:value-of select="hans:vormista-viide(vka:agrp/vka:viide)"/></span>“.
+        <div class="metainfonarratiiv"><p>Selle <xsl:value-of select="vka:agrp/vka:dgrp/vka:saj"/>.&#160;sajandil kirja pandud teksti leidis <xsl:value-of select="vka:sgrp/vka:snimi"/> tuhnides <xsl:if test="vka:agrp/vka:akeel != 'eesti'"> üht muidu <xsl:value-of select="vka:agrp/vka:akeel"/>&#173;keelset ürikut </xsl:if> <xsl:value-of select="$arhiivid/arhiiv[@nimi = $arhiiv]/seesütlev"/>. Täpsemini on ta sellele viidanud kui „<span class="viide"><xsl:value-of select="hans:vormista-viide(vka:agrp/vka:viide)"/></span>“.
         <xsl:value-of select="tokenize(vka:sgrp/vka:snimi, '\s+')[1]"/> registreeris leiu Hansus <xsl:value-of select="format-date(vka:KA, '[D].[M].[Y]')"/>.
-        Leiule võib viidata kirje id-numbriga <xsl:value-of select="vka:m"/> või püsi&#173;lingiga <a href="http://hans.eki.ee/id/{vka:m}">http://hans.eki.ee/id/<xsl:value-of select="vka:m"/></a>. Leidudele viitamise kohta võid lugeda rohkem <a href="citing">siit</a>.</div>
+        Leiule võib viidata kirje id-numbriga <xsl:value-of select="vka:m"/> või püsi&#173;lingiga <a href="http://hans.eki.ee/id/{vka:m}">http://hans.eki.ee/id/<xsl:value-of select="vka:m"/></a>. Leidudele viitamise kohta võid lugeda rohkem <a href="citing">siit</a>.</p></div>
         <xsl:if test="not(empty(vka:tgrp/vka:kirjeldus))">
           <div class="lisainfo"><h2>Tekstile on lisatud kirjeldus</h2><xsl:sequence select="vka:tgrp/vka:kirjeldus/p"/></div>
         </xsl:if>
