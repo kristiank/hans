@@ -613,7 +613,7 @@ function eelex:web-get-by-id(
 declare
   %rest:GET
   %rest:path("xml/last-added.xml")
-  %rest:query-param("n", "{$n}", "7")
+  %rest:query-param("n", "{$n}", "15")
   %output:method("xml")
   %output:omit-xml-declaration("no")
   %output:indent("yes")
