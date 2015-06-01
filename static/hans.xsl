@@ -100,7 +100,16 @@
       <ul>
         <xsl:for-each select="$entries//vka:A">
           <xsl:variable name="date" select="vka:KA"/>
-          <xsl:variable name="arakiri-tekst" select="substring(vka:tgrp/vka:arakiri, 1, 250)"/>
+          <xsl:variable name="arakiri-tekst">
+            <xsl:choose>
+              <xsl:when test="string-length(vka:tgrp/vka:arakiri) gt 120">
+                 <xsl:value-of select="concat(substring(vka:tgrp/vka:arakiri, 1, 140), '…')"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="vka:tgrp/vka:arakiri"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
           <xsl:variable name="arhiiv" select="vka:agrp/vka:viide/vka:a"/>
           <xsl:variable name="nimi" select="vka:sgrp/vka:snimi"/>
           <xsl:variable name="eesnimi" select="tokenize(vka:sgrp/vka:snimi, '\s+')[1]"/>
