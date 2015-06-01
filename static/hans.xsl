@@ -102,8 +102,8 @@
           <xsl:variable name="date" select="vka:KA"/>
           <xsl:variable name="arakiri-tekst">
             <xsl:choose>
-              <xsl:when test="string-length(vka:tgrp/vka:arakiri) gt 120">
-                 <xsl:value-of select="concat(substring(vka:tgrp/vka:arakiri, 1, 140), '…')"/>
+              <xsl:when test="string-length(vka:tgrp/vka:arakiri) gt 150">
+                 <xsl:value-of select="concat(substring(vka:tgrp/vka:arakiri, 1, 150), '…')"/>
               </xsl:when>
               <xsl:otherwise>
                 <xsl:value-of select="vka:tgrp/vka:arakiri"/>
