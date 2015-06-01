@@ -80,7 +80,7 @@
                           ' ', $viide/vka:fondinimi,
                           ' ', $viide/vka:n,
                           ' ', $viide/vka:s,
-                          ' lk ', $viide/vka:l)"/>
+                          ' ', $viide/vka:l)"/>
   </xsl:function>
 
   
