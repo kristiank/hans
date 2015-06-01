@@ -6,6 +6,8 @@ body {
 .lisatud-kirje {
 	border-bottom: 1px solid;
 	border-top: 1px solid;
+	padding-bottom: 1em;
+	padding-top: 1em;
 	font-family: sans-serif;
 	font-weight: 100;
 	position: relative;
