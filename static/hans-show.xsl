@@ -52,7 +52,7 @@
         <h2>Tegevused</h2>
           <a href="edit?id={vka:m}">Toimeta leiu andmeid</a>. <a href="view-detailed?id={vka:m}">Vaata täpsemaid andmeid</a>. <a href="xml?id={vka:m}">Vaata andmete XMLi</a>.
         </div>
-        <div class="orienteerumisriba"><a href="#">Vaata sama ajastu tekste</a>. <a href="#">Vaata samast arhiivist leitud tekste</a>.</div>
+        <div class="orienteerumisriba"><a href="#">Avasta sama ajastu tekste</a>. <a href="#">Avasta samast arhiivist leitud tekste</a>.</div>
     </xsl:result-document>
   </xsl:template>
   
