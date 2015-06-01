@@ -206,7 +206,7 @@ th:hover { background: #e4eef0; cursor: pointer }
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
-#content p {
+#content {
 	font-family: Impact, Charcoal, sans-serif;
 	font-weight: 100;
 	font-size: 17px;
