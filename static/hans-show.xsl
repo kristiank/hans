@@ -42,7 +42,7 @@
         </xsl:if>
         <xsl:if test="not(empty(vka:tgrp/vka:tkom))"><div class="lisainfo"><h2>Teksti ja selle tausta on seletatud kommentaariga</h2><xsl:sequence select="vka:tgrp/vka:tkom/p"/></div></xsl:if>
         <xsl:if test="not(empty(.//vka:ffail))">
-          <div class="pisipildid"><h2>Leiule on lisatud pildid</h2>
+          <div class="pisipildid"><h2>Leiule on lisatud <xsl:choose><xsl:when test="count(.//vka:ffail) gt 1">pildid</xsl:when><xsl:otherwise>üks pilt</xsl:otherwise></xsl:choose></h2>
             <xsl:for-each select=".//vka:ffail">
               <a href="raw/{$id}/{.}"><img class="pisipilt" alt="Leidu kirjeldav pilt" src="raw/{$id}/{.}"/></a>
             </xsl:for-each>
