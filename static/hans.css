@@ -35,8 +35,8 @@ body {
 	width: auto;
 	height: 100%;
 	overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: wrap;
+	text-overflow: ellipsis;
+	white-space: wrap;
 	font-size: 1.5em;
 }
 .paremal {
@@ -58,12 +58,11 @@ img.pisipilt {
 }
 
 .metainfonarratiiv {
-	padding: 10px;
-  padding-left: 0px;
+	padding-bottom: 10px;
+	padding-left: 10px;
 	font-family: sans-serif;
-	/* font-size: 18px;
-	font-family: sans-serif; */
-	line-height: 1.9;
+	font-size: 1em;
+	line-height: 1.7;
 }
 
 .vanatekst {
@@ -107,14 +106,14 @@ td.arakiri-tekst {
 }
 
 td.nimi {
-	width:     100%;
+	width:		 100%;
 	max-width: 100px;
 }
 div.nimi {
 	width: inherit;
 	overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .nimi {
 	font: italic bold 12px Georgia, serif;
@@ -127,8 +126,8 @@ td.viide {
 div.viide {
 	width: inherit;
 	overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .viide {
 	
@@ -174,10 +173,10 @@ label {
 	cursor: pointer;
 }
 
-a:link    {color: #003b80; text-decoration:underline}
+a:link		{color: #003b80; text-decoration:underline}
 a:visited {text-decoration:underline}
-/*a:hover   {color: #74b8e1; text-decoration:underline}*/
-a:active  {color: #74b8e1; text-decoration:underline}
+/*a:hover	 {color: #74b8e1; text-decoration:underline}*/
+a:active	{color: #74b8e1; text-decoration:underline}
 
 .nolink:link,
 .nolink:visited {
