@@ -49,10 +49,10 @@
           </div>
           </xsl:if>
         <div class="toiminguriba">
-        <h2>Tegevused</h2>
-          <a href="edit?id={vka:m}">Toimeta leiu andmeid</a>. <a href="view-detailed?id={vka:m}">Vaata täpsemaid andmeid</a>. <a href="xml?id={vka:m}">Vaata andmete XMLi</a>.
+        <h2>Tegevused ja orienteerumine</h2>
+          <p><a href="edit?id={vka:m}">Toimeta leiu andmeid</a>. <a href="view-detailed?id={vka:m}">Vaata täpsemaid andmeid</a>. <a href="xml?id={vka:m}">Vaata andmete XMLi</a>.</p>
         </div>
-        <div class="orienteerumisriba"><a href="#">Avasta sama ajastu tekste</a>. <a href="#">Avasta samast arhiivist leitud tekste</a>.</div>
+        <div class="orienteerumisriba"><p><a href="#">Avasta sama ajastu tekste</a>. <a href="#">Avasta samast arhiivist leitud tekste</a>.</p></div>
     </xsl:result-document>
   </xsl:template>
   
