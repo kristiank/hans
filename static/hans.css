@@ -47,16 +47,6 @@ body {
 	width: 120px;
 }
 
-.vka_A {
-	padding: 10px;
-	font-family: sans-serif;
-}
-
-
-.leiu_info_narratiiv {
-	padding: 10px;
-}
-
 .pisipildid {
 	right: 1em;
 	top: 1em;
@@ -69,19 +59,10 @@ img.pisipilt {
 
 .metainfonarratiiv {
 	padding: 10px;
+	font-family: sans-serif;
 	/* font-size: 18px;
 	font-family: sans-serif; */
-	line-height: 1.7;
-}
-
-.vka_arakiri {
-	background-color: lightgoldenrodyellow;
-	font-family: 'New Century Schoolbook', Georgia, serif;
-	padding: 10px;
-	font-weight: 200;
-	font-style: italic;
-	text-align: left;
-	font-size: 20px;
+	line-height: 1.9;
 }
 
 .vanatekst {
@@ -93,19 +74,6 @@ img.pisipilt {
 	text-align: left;
 	font-size: 18px;
 	line-height: 1.7;
-}
-
-.vka_arakiri p {
-	margin: 5;
-	font: inherit;
-}
-
-.vka_kirjeldus {
-	padding: 10px
-}
-
-.vka_tkom {
-	padding: 10px
 }
 
 th {
@@ -136,15 +104,6 @@ td.arakiri-tekst {
 	width: 100%;
 	max-width: 10px;
 }
-.lisatud-kirje .arakiri-tekst a:link,
-.lisatud-kirje .arakiri-tekst a:visited {
-	text-decoration: none;
-	color: black;
-}
-
-.arakiri-tekst a:hover {
-	text-decoration: underline;
-}
 
 td.nimi {
 	width:     100%;
@@ -171,13 +130,12 @@ div.viide {
   white-space: nowrap;
 }
 .viide {
-	font: small-caps 12px monospace;
+	
 }
 
 h1 {
 	clear: left;
 	font-family: "Times New Roman", Times, serif;
-	/* font-size: 32; */
 	font-weight: 300;
 }
 
@@ -215,34 +173,20 @@ label {
 	cursor: pointer;
 }
 
-.form-element {
-	margin: 2px;
-	border: 1px lightblue solid;
-	float: left;
-	width: 30%;
-	display: block;
-	min-width: 300px;
-	font-family: arial;
-}
-
-.form-text {
-	font-size: smaller;
-}
-
-.form-help {
-	font-style: italic;
-	font-size: small;
-	color: gray;
-}
-
-.form-section {
-	border: 1px dashed red;
-}
-
 a:link    {color: #003b80; text-decoration:underline}
 a:visited {text-decoration:underline}
 /*a:hover   {color: #74b8e1; text-decoration:underline}*/
 a:active  {color: #74b8e1; text-decoration:underline}
+
+.nolink a:link,
+.nolink a:visited {
+	text-decoration: none;
+	color: black;
+}
+.nolink a:hover {
+	text-decoration: underline;
+}
+
 
 ul {
 	list-style-type: none;
