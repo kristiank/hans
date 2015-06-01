@@ -1,5 +1,6 @@
 body {
-	margin-left: 20px;
+	margin-left: 2%;
+	margin-right: 2%;
 }
 
 .lisatud-kirje {
@@ -15,7 +16,6 @@ body {
 }
 
 .sajand {
-	font-family: serif;
 	font-size: 1.9em;
 	float: left;
 }
@@ -27,17 +27,20 @@ body {
 	left: 0px;
 	width: 90px;
 }
-.keskel {
-	position: absolute;
-	display: block;
-	left: 90px;
-	right: 120px;
-	width: auto;
-	height: 100%;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: wrap;
-	font-size: 1.5em;
+.keskel{
+	position:absolute;
+	display:block;
+	left:85px;
+	right:120px;
+	width:auto;
+	height:4em;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:wrap;
+	font-size:1.5em;
+	font-family: 'New Century Schoolbook',Georgia,serif;
+	font-style: italic;
+	font-weight: 100;
 }
 .paremal {
 	font-size: 1em;

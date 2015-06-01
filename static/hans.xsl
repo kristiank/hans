@@ -91,7 +91,7 @@
     
     <!-- Lisa kuupäev viimati lisatud pealkirja juurde -->
     <xsl:result-document href="#results" method="ixsl:replace-content">
-      <h2>Viimati leitud tekstid
+      <h2>Viimati lisatud tekstid
        <!-- <xsl:value-of select="format-date(current-date(), '(seisuga [D].[M].[Y])')"/> -->
       </h2>
     </xsl:result-document>   
@@ -115,7 +115,7 @@
                 <span class="arakiri-tekst"><a class="nolink" href="view?id={$id}"><xsl:value-of select="$arakiri-tekst"/></a></span>
               </span>
               <span class="paremal">
-                leidis <xsl:value-of select="$eesnimi"/><xsl:text> </xsl:text><xsl:value-of select="$arhiivid/arhiiv[@nimi = $arhiiv]/väljaütlev"/><xsl:text> </xsl:text><xsl:value-of select="format-date($date, '[D].[M].[Y]')"/>
+                Teksti leidis <xsl:value-of select="$eesnimi"/><xsl:text> </xsl:text><xsl:value-of select="$arhiivid/arhiiv[@nimi = $arhiiv]/väljaütlev"/><xsl:text> </xsl:text><xsl:value-of select="format-date($date, '[D].[M].[Y]')"/>
               </span>
             </div>
           </li>
