@@ -75,12 +75,12 @@
   <!-- Viite tekstiline vormistamine -->
   <xsl:function name="hans:vormista-viide">
     <xsl:param name="viide" as="element(vka:viide)"/>
-    <xsl:sequence select="concat($viide/vka:a,
+    <xsl:sequence select="normalize-space(concat($viide/vka:a,
                           ' ', $viide/vka:f,
                           ' ', $viide/vka:fondinimi,
                           ' ', $viide/vka:n,
                           ' ', $viide/vka:s,
-                          ' ', $viide/vka:l)"/>
+                          ' ', $viide/vka:l))"/>
   </xsl:function>
 
   
