@@ -50,15 +50,8 @@
       background: lightskyblue;
     }
     legend {
-      font-family: "Raleway",sans-serif;
+      font-family: sans-serif;
       font-weight: 100;
-    }
-    
-    @font-face {
-      font-family: 'Raleway';
-      font-style: normal;
-      font-weight: 100;
-      src: local('Raleway Thin'), local('Raleway-Thin'), url(http://fonts.gstatic.com/s/raleway/v9/RJMlAoFXXQEzZoMSUteGWFtXRa8TVwTICgirnJhmVJw.woff2) format('woff2'), url(http://fonts.gstatic.com/s/raleway/v9/RJMlAoFXXQEzZoMSUteGWD8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
     }
     </style>
     <!-- Hansu EELexi artikli mudel -->
