@@ -671,7 +671,7 @@ function eelex:web-view-narrative(
   $id as xs:integer
 )
 {
-  let $content := ('')
+  let $content := ('Lehekülg laadib…')
   let $page := 
     copy $template := fetch:xml(concat(file:base-dir(),
                                 'hans-template.html'))
@@ -708,7 +708,7 @@ function eelex:web-view-detailed(
   $id as xs:integer
 )
 {
-  let $content := ('')
+  let $content := ('Lehekülg laadib…')
   let $page := 
     copy $template := fetch:xml(concat(file:base-dir(),
                                 'hans-template.html'))
@@ -775,7 +775,11 @@ function eelex:web-start-page()
         into $template//script[@language="xslt2.0"],
       insert node (attribute {"data-source"} {"xml/last-added.xml"})
         into $template//script[@language="xslt2.0"],
-      insert node $content/content/* into $template//*:div[@id = 'content']
+      insert node $content/content/*
+        into $template//*:div[@id = 'content'],
+      replace value of node $template/html/body/div[@id = 'results']
+        with ("Lehekülg laadib…")
+      
     ) return $template
   
   return $page
