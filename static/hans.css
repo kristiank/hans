@@ -52,6 +52,11 @@ body {
 	width: 120px;
 }
 
+.inline-icon {
+	height: 1.7ex;
+	vertical-align: baseline;
+}
+
 .pisipildid {
 	right: 1em;
 	top: 1em;

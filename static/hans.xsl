@@ -91,7 +91,7 @@
     
     <!-- Lisa kuupäev viimati lisatud pealkirja juurde -->
     <xsl:result-document href="#results" method="ixsl:replace-content">
-      <h2>Viimati lisatud tekstid
+      <h2>Viimati lisatud tekstid <a href="newsfeed/rss.xml" alt="Uudisvoo link"><img class="inline-icon" src="static/media/Feed-icon.svg" alt="Uudisvoo ikoon"/></a>
        <!-- <xsl:value-of select="format-date(current-date(), '(seisuga [D].[M].[Y])')"/> -->
       </h2>
     </xsl:result-document>   
