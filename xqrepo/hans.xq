@@ -538,7 +538,7 @@ function eelex:web-update-xforms(
     modify (
       insert node attribute {'src'} {
         (: the URL for the entry's xml :)
-        web:create-url("xml", map {"id": $id})
+        web:create-url("xml", map {"id": $id, "xforms": 'xforms'})
       }
         into $page//xf:instance[@id = "hans-instance"]
     ) return $page
@@ -584,20 +584,39 @@ function eelex:get-by-id(
  :
  : @since 1.0
  : @param id The id of the entry
+ : @param xforms Whether textarea fields should be serialized especially for XForms
  : @return XML
  :)
 declare
   %rest:GET
   %rest:path("xml")
   %rest:query-param("id", "{$id}", "0")
+  %rest:query-param("xforms", "{$xforms}", "")
   %output:method("xml")
   %output:omit-xml-declaration("no")
   %output:normalization-form("NFC")
 function eelex:web-get-by-id(
-  $id as xs:integer
+  $id as xs:integer,
+  $xforms as xs:string
 )
 {
-  eelex:privatize-xml(eelex:get-by-id($id))
+  let $xml := 
+    copy $tmp := eelex:privatize-xml(eelex:get-by-id($id))
+    modify(
+      if($xforms = "xforms") (:✓:)
+      then(
+        for $node in $tmp//(vka:arakiri | vka:tkom | vka:kirjeldus)
+        return replace value of node $node
+          with 
+            for $paragraph in $tmp//vka:arakiri/p
+              return 
+                concat(normalize-space($paragraph/text()),
+                       out:nl() || out:nl())
+      )
+      else()
+    )
+    return $tmp
+  return $xml
 };
 
 
