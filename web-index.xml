@@ -11,8 +11,7 @@
   <li>
     <p><form action="search">
     <input type="text" name="q" id="search-box"
-     title="Otsi kohe" label="Otsi kohe" autocomplete="off"
-     autofocus="no" />
+     title="Otsi kohe" label="Otsi kohe" autocomplete="off"/>
      <input type="submit" name="submit" value="otsi kohe"/>
     </form></p>
   </li>
