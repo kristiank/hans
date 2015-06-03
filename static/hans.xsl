@@ -99,8 +99,31 @@
     <xsl:result-document href="#results" method="replace-content">
       <ul>
         <xsl:for-each select="$entries//vka:A">
-        <xsl:sort select="xs:date(vka:KA)" order="descending"/>
-          <xsl:variable name="date" select="vka:KA"/>
+          <xsl:sort select="xs:date(vka:KA)" order="descending"/>
+          <xsl:variable name="current-date" select="current-date()"/>
+          <xsl:variable name="date-added" select="xs:date(vka:KA)"/>
+          <xsl:variable name="duration" select="$current-date - $date-added"/>
+          <xsl:variable name="days-ago" select="days-from-duration($duration)"/>
+          <xsl:variable name="months-ago" select="months-from-duration($duration)"/>
+          <xsl:variable name="date">
+            <xsl:choose>
+              <xsl:when test="$months-ago gt 0 and $months-ago lt 12">
+                <xsl:value-of select="concat($months-ago, ' kuu eest')"/>
+              </xsl:when>
+              <xsl:when test="$days-ago lt 1">
+                <xsl:value-of select="'lausa täna'"/>
+              </xsl:when>
+              <xsl:when test="$days-ago lt 14">
+                <xsl:value-of select="concat($days-ago, ' päeva eest')"/>
+              </xsl:when>
+              <xsl:when test="$days-ago lt (2 * 14)">
+                <xsl:value-of select="concat(floor($days-ago div 7), ' nädala eest')"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="'rohkem kui aasta aega tagasi'"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
           <xsl:variable name="arakiri-tekst">
             <xsl:choose>
               <xsl:when test="string-length(vka:tgrp/vka:arakiri) gt 150">
@@ -125,7 +148,7 @@
                 <span class="arakiri-tekst"><a class="nolink" href="view?id={$id}"><xsl:value-of select="$arakiri-tekst"/></a></span>
               </span>
               <span class="paremal">
-                Teksti leidis <xsl:value-of select="$eesnimi"/><xsl:text> </xsl:text><xsl:value-of select="$arhiivid/arhiiv[@nimi = $arhiiv]/väljaütlev"/><xsl:text> </xsl:text><xsl:value-of select="format-date($date, '[D].[M].[Y]')"/>
+                Teksti leidis <xsl:value-of select="$eesnimi"/><xsl:text> </xsl:text><xsl:value-of select="$date"/><xsl:text> </xsl:text><xsl:value-of select="$arhiivid/arhiiv[@nimi = $arhiiv]/väljaütlev"/>
               </span>
             </div>
           </li>
