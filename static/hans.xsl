@@ -99,6 +99,7 @@
     <xsl:result-document href="#results" method="replace-content">
       <ul>
         <xsl:for-each select="$entries//vka:A">
+        <xsl:sort select="xs:date(vka:KA)" order="descending"/>
           <xsl:variable name="date" select="vka:KA"/>
           <xsl:variable name="arakiri-tekst">
             <xsl:choose>
