@@ -180,8 +180,11 @@ updating function eelex:save-new-entry(
         let $norm-text := replace($text, "&amp;br;", out:nl())
         let $new-text := 
           element {node-name($text)} {
-            for $line in tokenize($norm-text, "([\n]?[\r])+")
-              return element {'p'} {$line}
+            for $line in tokenize($norm-text, "[ \p{Zl}&#10;&#13;][\p{Zl}&#10;&#13;]")
+              return
+                if(string-length(normalize-space($line)) gt 0)
+                then(element {'p'} {$line})
+                else()
           }
         return replace node $text
           with $new-text
@@ -266,8 +269,11 @@ updating function eelex:web-update-entry(
         let $norm-text := replace($text, "&amp;br;", out:nl())
         let $new-text := 
           element {node-name($text)} {
-            for $line in tokenize($norm-text, "(&#10;?&#13;)+")
-              return element {'p'} {$line}
+            for $line in tokenize($norm-text, "[ \p{Zl}&#10;&#13;][\p{Zl}&#10;&#13;]")
+              return
+                if(string-length(normalize-space($line)) gt 0)
+                then(element {'p'} {$line})
+                else()
           }
         return replace node $text
           with $new-text
@@ -608,10 +614,9 @@ function eelex:web-get-by-id(
         for $node in $tmp//(vka:arakiri | vka:tkom | vka:kirjeldus)
         return replace value of node $node
           with 
-            for $paragraph in $tmp//vka:arakiri/p
+            for $paragraph in $node/p
               return 
-                concat(normalize-space($paragraph/text()),
-                       out:nl() || out:nl())
+                concat(normalize-space($paragraph/data()), '&#x0A;&#x0A;')
       )
       else()
     )
@@ -884,8 +889,11 @@ declare updating function eelex:import-from-EELex(
         let $norm-text := replace($text, "&amp;br;", out:nl())
         let $new-text := 
           element {node-name($text)} {
-            for $line in tokenize($norm-text, "[\n\r]+")
-              return element {'p'} {$line}
+            for $line in tokenize($norm-text, "[ \p{Zl}&#10;&#13;][\p{Zl}&#10;&#13;]")
+              return
+                if(string-length(normalize-space($line)) gt 0)
+                then(element {'p'} {$line})
+                else()
           }
         return replace node $text
           with $new-text
